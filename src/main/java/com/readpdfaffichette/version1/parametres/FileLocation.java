@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class FileLocation {
-    @Value("${file.link}")
+    @Value("${inputfile.link}")
     private String link;
 
     @Value("${file.saveplace}")
