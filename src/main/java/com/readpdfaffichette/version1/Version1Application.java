@@ -47,7 +47,7 @@ public class Version1Application {
                  //pour chaque chemin obtenu, permet de le transformer en fichier et d'extraire le texte 
                  .forEach(path -> {
                      try {
-                         String text = extractTextFromPDF(path.toFile());
+                         String text = extractTextFromPDF(path.toFile(), fileLocation);
                          allTexts.append(text).append("\n\n");
                      } catch (IOException e) {
                          e.printStackTrace();
@@ -59,7 +59,7 @@ public class Version1Application {
         Files.write(outputPath, allTexts.toString().getBytes(StandardCharsets.UTF_8));
     }
 
-    public static String extractTextFromPDF(File file) throws IOException {
+    public static String extractTextFromPDF(File file, FileLocation fileLocation) throws IOException {
         PDDocument document = PDDocument.load(file);
 
         // Instancier la classe PDFTextStripper
@@ -72,9 +72,9 @@ public class Version1Application {
         document.close();
 
         // Séparer les différentes parties du texte
-        String titles = extractTitles(text);
-        String cityAndPostalCode = extractCityAndPostalCode(text);
-        String date = extractDate(text);
+        String titles = extractTitles(text, fileLocation);
+        String cityAndPostalCode = extractCityAndPostalCode(text, fileLocation);
+        String date = extractDate(text, fileLocation);
 
         // Concaténer les informations triées
         String sortedText = "Titre(s) : " + titles + "\n" +
@@ -84,25 +84,25 @@ public class Version1Application {
         return sortedText;
     }
 
-    public static String extractTitles(String text) {
+    public static String extractTitles(String text, FileLocation fileLocation) {
         // Regex pour les Titres
-        String titlesRegex = "(.*?)(?=\\d{2} -)";
+        String titlesRegex = fileLocation.getReggexTitles();
         Pattern titlesPattern = Pattern.compile(titlesRegex, Pattern.DOTALL);
         Matcher titlesMatcher = titlesPattern.matcher(text);
         return titlesMatcher.find() ? titlesMatcher.group(1).trim() : "null";
     }
 
-    public static String extractCityAndPostalCode(String text) {
+    public static String extractCityAndPostalCode(String text, FileLocation fileLocation) {
         // Regex pour la Ville et le Code Postal
-        String cityAndPostalCodeRegex = "\\d{2} - .+";
+        String cityAndPostalCodeRegex = fileLocation.getReggexCity();
         Pattern cityAndPostalCodePattern = Pattern.compile(cityAndPostalCodeRegex);
         Matcher cityAndPostalCodeMatcher = cityAndPostalCodePattern.matcher(text);
         return cityAndPostalCodeMatcher.find() ? cityAndPostalCodeMatcher.group().trim() : "null";
     }
 
-    public static String extractDate(String text) {
+    public static String extractDate(String text, FileLocation filelocation) {
         // Regex pour la Date
-        String dateRegex = "([a-zA-Z]+ \\d{1,2} \\w+ \\d{4})";
+        String dateRegex = filelocation.getReggexDate();
         Pattern datePattern = Pattern.compile(dateRegex);
         Matcher dateMatcher = datePattern.matcher(text);
         return dateMatcher.find() ? dateMatcher.group().trim() : "null";
