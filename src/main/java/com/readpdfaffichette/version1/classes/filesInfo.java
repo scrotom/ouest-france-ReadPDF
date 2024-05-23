@@ -1,24 +1,21 @@
-/*
- * Nom de classe : ressources
- *
- * Description   : Classe permettant de récuperer les paramètres de l'application
- *
- * Date          : 23/05/2024
- * 
- */
+package com.readpdfaffichette.version1.classes;
 
- package com.readpdfaffichette.version1.parametres;
-
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.nio.file.Path;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component
-public class ressources {
+public class filesInfo {
+
+    //récupératon du chemin vers le dossier ou sont placé les pdf
     @Value("${inputfile.link}")
     private String link;
     
+    //chemin pour le fichier css
     @Value("${styleCss.saveplace}")
     private Path styleCssSaveplace;
 
@@ -39,16 +36,6 @@ public class ressources {
     @Value("${mergedFile.saveplace}")
     private Path mergedFile;
 
-    //récupération des reggex
-    @Value("${reggex.titles}")
-    private String reggexTitles;
-
-    @Value("${reggex.city}")
-    private String reggexCity;
-
-    @Value("${reggex.date}")
-    private String reggexDate;
-
     //getter
     public String getLink() {
         return link;
@@ -56,18 +43,6 @@ public class ressources {
 
     public Path getStyleCssSaveplace() {
         return styleCssSaveplace;
-    }
-
-    public String getReggexTitles() {
-        return reggexTitles;
-    }
-
-    public String getReggexCity() {
-        return reggexCity;
-    }
-
-    public String getReggexDate() {
-        return reggexDate;
     }
 
     public Path getStyleCssSource() {
@@ -89,4 +64,18 @@ public class ressources {
     public Path getTextFile1Saveplace() {
         return textFile1Saveplace;
     }
+
+    //méthode permettant de combiner deux fichier texte
+    public static void mergeTextFiles(Path file1Path, Path file2Path, Path combinedFilePath) throws IOException {
+        // Lire le contenu des deux fichiers
+        String file1Content = Files.readString(file1Path, StandardCharsets.UTF_8);
+        String file2Content = Files.readString(file2Path, StandardCharsets.UTF_8);
+
+        // Combiner les contenus
+        String combinedContent = file1Content + file2Content;
+
+        // Écrire le contenu combiné dans un nouveau fichier
+        Files.write(combinedFilePath, combinedContent.getBytes(StandardCharsets.UTF_8));
+    }
 }
+
