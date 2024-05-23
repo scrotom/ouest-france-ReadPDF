@@ -1,5 +1,7 @@
 package com.readpdfaffichette.version1.parametres;
 
+import java.nio.file.Path;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -12,10 +14,27 @@ public class FileLocation {
     private String fileSaveplace;
 
     @Value("${docHtml.saveplace}")
-    private String docHtmlSaveplace;
+    private Path docHtmlSaveplace;
     
     @Value("${styleCss.saveplace}")
-    private String styleCssSaveplace;
+    private Path styleCssSaveplace;
+
+    @Value("${styleCss.source}")
+    private Path styleCssSource;
+
+    //récupération des fichiers pour le doc html final
+    @Value("${partie1.source}")
+    private Path textFile1;
+
+    @Value("${partie3.source}")
+    private Path textFile3;
+
+    @Value("${partie1.saveplace}")
+    private Path textFile1Saveplace;
+
+    //récupération du dossier d'enregistrement des document mergé
+    @Value("${mergedFile.saveplace}")
+    private Path mergedFile;
 
     //récupération des reggex
     @Value("${reggex.titles}")
@@ -36,11 +55,11 @@ public class FileLocation {
         return fileSaveplace;
     }
 
-    public String getDocHtmlSaveplace() {
+    public Path getDocHtmlSaveplace() {
         return docHtmlSaveplace;
     }
 
-    public String getStyleCssSaveplace() {
+    public Path getStyleCssSaveplace() {
         return styleCssSaveplace;
     }
 
@@ -54,5 +73,25 @@ public class FileLocation {
 
     public String getReggexDate() {
         return reggexDate;
+    }
+
+    public Path getStyleCssSource() {
+        return styleCssSource;
+    }
+
+    public Path getTextFile1() {
+        return textFile1;
+    }
+
+    public Path getTextFile3() {
+        return textFile3;
+    }
+
+    public Path getMergedFile() {
+        return mergedFile;
+    }
+
+    public Path getTextFile1Saveplace() {
+        return textFile1Saveplace;
     }
 }

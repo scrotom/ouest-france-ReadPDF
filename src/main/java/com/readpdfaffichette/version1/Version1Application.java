@@ -6,6 +6,8 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
+import java.nio.file.StandardOpenOption;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Stream;
@@ -32,9 +34,14 @@ public class Version1Application {
             return;
         }
 
+        //copie du fichier css
+        Files.copy(fileLocation.getStyleCssSource(), fileLocation.getStyleCssSaveplace(), StandardCopyOption.REPLACE_EXISTING);
+
+        //copie de la partie1 du doc html, afin de pouvoir le modifier ensuite
+        Files.copy(fileLocation.getTextFile1(), fileLocation.getTextFile1Saveplace(), StandardCopyOption.REPLACE_EXISTING);
+
         // Fichier texte de sortie
         Path outputPath = Paths.get(fileLocation.getSaveplace());
-
         StringBuilder allTexts = new StringBuilder();
 
         // parcours tout les fichiers du dossier a partir de l'endroit spécifié par fileLocation (transformé en path).
@@ -55,8 +62,14 @@ public class Version1Application {
                  });
         }
 
-        // Écrire le texte extrait dans le fichier texte en utilisant UTF-8
-        Files.write(outputPath, allTexts.toString().getBytes(StandardCharsets.UTF_8));
+        // ajouter le texte extrait à la fin du fichier texte existant (partie1 : début du code html)
+        Files.write(fileLocation.getTextFile1Saveplace(), allTexts.toString().getBytes(StandardCharsets.UTF_8), StandardOpenOption.APPEND);
+
+        //merger les deux fichier txt qui serviront à la page html
+        mergeTextFiles(fileLocation.getTextFile1Saveplace(), fileLocation.getTextFile3(), fileLocation.getMergedFile());
+
+        //supprimer la partie1 du dossier final
+        Files.delete(fileLocation.getTextFile1Saveplace());
     }
 
     public static String extractTextFromPDF(File file, FileLocation fileLocation) throws IOException {
@@ -77,11 +90,11 @@ public class Version1Application {
         String date = extractDate(text, fileLocation);
 
         // Concaténer les informations triées
-        String sortedText = "Titre(s) : " + titles + "\n" +
-                            "Ville et CP région : " + cityAndPostalCode + "\n" +
-                            "Date : " + date;
+        System.err.println(text);
 
-        return sortedText;
+        String sortedText2 = "<tr><th>" + date + "</th><th>" + titles + "</th><th>" + cityAndPostalCode + "</th></tr>";
+        
+        return sortedText2;
     }
 
     public static String extractTitles(String text, FileLocation fileLocation) {
@@ -107,4 +120,17 @@ public class Version1Application {
         Matcher dateMatcher = datePattern.matcher(text);
         return dateMatcher.find() ? dateMatcher.group().trim() : "null";
     }
+
+    public static void mergeTextFiles(Path file1Path, Path file2Path, Path combinedFilePath) throws IOException {
+        // Lire le contenu des deux fichiers
+        String file1Content = Files.readString(file1Path, StandardCharsets.UTF_8);
+        String file2Content = Files.readString(file2Path, StandardCharsets.UTF_8);
+
+        // Combiner les contenus
+        String combinedContent = file1Content + "\n" + file2Content;
+
+        // Écrire le contenu combiné dans un nouveau fichier
+        Files.write(combinedFilePath, combinedContent.getBytes(StandardCharsets.UTF_8));
+    }
+    
 }
