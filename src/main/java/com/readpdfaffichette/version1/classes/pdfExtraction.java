@@ -28,13 +28,13 @@ public class pdfExtraction {
         // Séparer les différentes parties du texte
         String[] titles = reggex.extractTitles(text, Reggex);
         String titles1 = titles[0];
-        String titles2 = titles.length > 1 ? titles[1] : "pas de deuxième titre";
+        String titles2 = titles.length > 1 ? titles[1] : "<br>";
         String cityAndPostalCode = reggex.extractCityAndPostalCode(text, Reggex);
         String date = reggex.extractDate(text, Reggex);
 
         // Concaténer les informations triées
-        String sortedText = "<tr><th>" + date + "</th><th>" + titles1 + "</th><th>" + titles2 + "</th><th>"+ cityAndPostalCode + "</th></tr>";
-       
+        String sortedText ="<TR><TD class=\"tableauAffichette\" width=\"25%\">" + cityAndPostalCode + "</TD><TD class=\"tableauAffichette\" width=\"25%\">" + date + "</TD><TD class=\"tableauAffichette\">" + titles1 + "<BR>" + titles2 + "</TD></TR>";
+        
         return sortedText;
     }  
 }

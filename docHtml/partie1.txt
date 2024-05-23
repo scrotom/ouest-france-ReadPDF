@@ -1,19 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Résumé des affichettes</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <table>
-        <thead>
-            <tr>
-                <th>Date</th>
-                <th>Titres 1</th>
-                <th>Titres 2</th>
-                <th>Région/Ville</th>               
-            </tr>
-        </thead>
-        <tbody>
+<HTML>
+    <HEAD>
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <META>
+    </HEAD>
+    <style type="text/css">
+        <!-- .tableauAffichette {
+            font-family: "Ouest France Regular";
+            font-size: 14px;
+            background-color: #FFFFFF
+        }
+
+        .tableauAffichetteColore {
+            font-family: "Ouest France Regular";
+            font-size: 14px;
+            background-color: #FFCC99
+        }
+
+        --> </style>
+    <BODY>
+<TABLE width="100%">
