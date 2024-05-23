@@ -13,8 +13,7 @@
                 <th>Date</th>
                 <th>Titres 1</th>
                 <th>Titres 2</th>
-                <th>Région/Ville</th>
-                
+                <th>Région/Ville</th>               
             </tr>
         </thead>
         <tbody>

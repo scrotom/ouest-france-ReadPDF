@@ -1,4 +1,13 @@
-package com.readpdfaffichette.version1.parametres;
+/*
+ * Nom de classe : FileLocation
+ *
+ * Description   : Classe permettant de récuperer les paramètres de l'application
+ *
+ * Date          : 23/05/2024
+ * 
+ */
+
+ package com.readpdfaffichette.version1.parametres;
 
 import java.nio.file.Path;
 
@@ -9,9 +18,6 @@ import org.springframework.stereotype.Component;
 public class FileLocation {
     @Value("${inputfile.link}")
     private String link;
-
-    @Value("${file.saveplace}")
-    private String fileSaveplace;
     
     @Value("${styleCss.saveplace}")
     private Path styleCssSaveplace;
@@ -43,13 +49,9 @@ public class FileLocation {
     @Value("${reggex.date}")
     private String reggexDate;
 
-    //constructeur
+    //getter
     public String getLink() {
         return link;
-    }
-
-    public String getSaveplace() {
-        return fileSaveplace;
     }
 
     public Path getStyleCssSaveplace() {

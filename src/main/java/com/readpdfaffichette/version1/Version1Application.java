@@ -1,4 +1,13 @@
-package com.readpdfaffichette.version1;
+/*
+ * Nom         : Version1Application.java
+ *
+ * Description : Application permettant d'effectuer les opérations dans le but de scanner des affichettes au format pdf, et d'en extraire le contenu trié dans un doc html.
+ *
+ * Date        : 23/05/2024
+ * 
+ */
+
+ package com.readpdfaffichette.version1;
 
 import java.io.File;
 import java.io.IOException;
@@ -70,7 +79,8 @@ public class Version1Application {
         //supprimer la partie1 du dossier final
         Files.delete(fileLocation.getTextFile1Saveplace());
     }
-
+    
+    //méthode permettant d'extraire le texte des pdf, et de le triés pour le document html
     public static String extractTextFromPDF(File file, FileLocation fileLocation) throws IOException {
         PDDocument document = PDDocument.load(file);
 
@@ -96,6 +106,7 @@ public class Version1Application {
         return sortedText;
     }
 
+    //méthode permettant d'extraire du texte brut les titres et des les séparer si il y en a 2
     public static String[] extractTitles(String text, FileLocation fileLocation) {
         // Regex pour les Titres
         String titlesRegex = fileLocation.getReggexTitles();
@@ -122,6 +133,7 @@ public class Version1Application {
         return new String[] { "null" };
     }
 
+    //méthode permettant d'extraire du texte brut la ville et le code postal
     public static String extractCityAndPostalCode(String text, FileLocation fileLocation) {
         // Regex pour la Ville et le Code Postal
         String cityAndPostalCodeRegex = fileLocation.getReggexCity();
@@ -130,6 +142,7 @@ public class Version1Application {
         return cityAndPostalCodeMatcher.find() ? cityAndPostalCodeMatcher.group().trim() : "null";
     }
 
+    //méthode permettant d'extraire du texte brut la date
     public static String extractDate(String text, FileLocation filelocation) {
         // Regex pour la Date
         String dateRegex = filelocation.getReggexDate();
@@ -138,6 +151,7 @@ public class Version1Application {
         return dateMatcher.find() ? dateMatcher.group().trim() : "null";
     }
 
+    //méthode permettant de combiner deux fichier texte
     public static void mergeTextFiles(Path file1Path, Path file2Path, Path combinedFilePath) throws IOException {
         // Lire le contenu des deux fichiers
         String file1Content = Files.readString(file1Path, StandardCharsets.UTF_8);
