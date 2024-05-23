@@ -1,5 +1,5 @@
 /*
- * Nom de classe : FileLocation
+ * Nom de classe : ressources
  *
  * Description   : Classe permettant de récuperer les paramètres de l'application
  *
@@ -15,7 +15,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component
-public class FileLocation {
+public class ressources {
     @Value("${inputfile.link}")
     private String link;
     

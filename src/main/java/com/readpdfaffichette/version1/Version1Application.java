@@ -26,7 +26,7 @@ import org.apache.pdfbox.text.PDFTextStripper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.readpdfaffichette.version1.parametres.FileLocation;
+import com.readpdfaffichette.version1.parametres.ressources;
 
 @SpringBootApplication
 public class Version1Application {
@@ -34,26 +34,26 @@ public class Version1Application {
     public static void main(String[] args) throws IOException {
 
         var context = SpringApplication.run(Version1Application.class, args);
-        FileLocation fileLocation = context.getBean(FileLocation.class);
+        ressources ressources = context.getBean(ressources.class);
 
         // Dossier contenant les fichiers PDF
-        File folder = new File(fileLocation.getLink());
+        File folder = new File(ressources.getLink());
         if (!folder.isDirectory()) {
             System.out.println("erreur : Le chemin n'ammène pas à un dossier.");
             return;
         }
 
         //copie du fichier css
-        Files.copy(fileLocation.getStyleCssSource(), fileLocation.getStyleCssSaveplace(), StandardCopyOption.REPLACE_EXISTING);
+        Files.copy(ressources.getStyleCssSource(), ressources.getStyleCssSaveplace(), StandardCopyOption.REPLACE_EXISTING);
 
         //copie de la partie1 du doc html, afin de pouvoir le modifier ensuite
-        Files.copy(fileLocation.getTextFile1(), fileLocation.getTextFile1Saveplace(), StandardCopyOption.REPLACE_EXISTING);
+        Files.copy(ressources.getTextFile1(), ressources.getTextFile1Saveplace(), StandardCopyOption.REPLACE_EXISTING);
 
         // Fichier texte de sortie
         StringBuilder allTexts = new StringBuilder();
 
-        // parcours tout les fichiers du dossier a partir de l'endroit spécifié par fileLocation (transformé en path).
-        try (Stream<Path> paths = Files.walk(Paths.get(fileLocation.getLink()))) {
+        // parcours tout les fichiers du dossier a partir de l'endroit spécifié par ressources (transformé en path).
+        try (Stream<Path> paths = Files.walk(Paths.get(ressources.getLink()))) {
 
             //permet de ne garder que les fichiers en .pdf
             paths.filter(Files::isRegularFile)
@@ -62,26 +62,28 @@ public class Version1Application {
                  //pour chaque chemin obtenu, permet de le transformer en fichier et d'extraire le texte 
                  .forEach(path -> {
                      try {
-                         String text = extractTextFromPDF(path.toFile(), fileLocation);
+                         String text = extractTextFromPDF(path.toFile(), ressources);
                          allTexts.append(text).append("\n\n");
-                     } catch (IOException e) {
-                         e.printStackTrace();
+                     } catch (IOException exception) {
+                        //warning sans le system.out ??
+                         exception.printStackTrace(System.out);
                      }
                  });
         }
 
         // ajouter le texte extrait à la fin du fichier texte existant (partie1 : début du code html)
-        Files.write(fileLocation.getTextFile1Saveplace(), allTexts.toString().getBytes(StandardCharsets.UTF_8), StandardOpenOption.APPEND);
+        Files.write(ressources.getTextFile1Saveplace(), allTexts.toString().getBytes(StandardCharsets.UTF_8), StandardOpenOption.APPEND);
 
         //merger les deux fichier txt qui serviront à la page html
-        mergeTextFiles(fileLocation.getTextFile1Saveplace(), fileLocation.getTextFile3(), fileLocation.getMergedFile());
+        mergeTextFiles(ressources.getTextFile1Saveplace(), ressources.getTextFile3(), ressources.getMergedFile());
 
         //supprimer la partie1 du dossier final
-        Files.delete(fileLocation.getTextFile1Saveplace());
+        Files.delete(ressources.getTextFile1Saveplace());
     }
     
-    //méthode permettant d'extraire le texte des pdf, et de le triés pour le document html
-    public static String extractTextFromPDF(File file, FileLocation fileLocation) throws IOException {
+    //méthode permettant d'extraire le texte des pdf, et de le trier pour le document html
+    public static String extractTextFromPDF(File file, ressources ressources) throws IOException {
+
         PDDocument document = PDDocument.load(file);
 
         // Instancier la classe PDFTextStripper
@@ -94,11 +96,11 @@ public class Version1Application {
         document.close();
 
         // Séparer les différentes parties du texte
-        String[] titles = extractTitles(text, fileLocation);
+        String[] titles = extractTitles(text, ressources);
         String titles1 = titles[0];
-        String titles2 = titles.length > 1 ? titles[1] : "vide";
-        String cityAndPostalCode = extractCityAndPostalCode(text, fileLocation);
-        String date = extractDate(text, fileLocation);
+        String titles2 = titles.length > 1 ? titles[1] : "pas de deuxième titre";
+        String cityAndPostalCode = extractCityAndPostalCode(text, ressources);
+        String date = extractDate(text, ressources);
 
         // Concaténer les informations triées
         String sortedText = "<tr><th>" + date + "</th><th>" + titles1 + "</th><th>" + titles2 + "</th><th>"+ cityAndPostalCode + "</th></tr>";
@@ -107,9 +109,9 @@ public class Version1Application {
     }
 
     //méthode permettant d'extraire du texte brut les titres et des les séparer si il y en a 2
-    public static String[] extractTitles(String text, FileLocation fileLocation) {
+    public static String[] extractTitles(String text, ressources ressources) {
         // Regex pour les Titres
-        String titlesRegex = fileLocation.getReggexTitles();
+        String titlesRegex = ressources.getReggexTitles();
         Pattern titlesPattern = Pattern.compile(titlesRegex, Pattern.DOTALL);
         Matcher titlesMatcher = titlesPattern.matcher(text);
         
@@ -134,18 +136,18 @@ public class Version1Application {
     }
 
     //méthode permettant d'extraire du texte brut la ville et le code postal
-    public static String extractCityAndPostalCode(String text, FileLocation fileLocation) {
+    public static String extractCityAndPostalCode(String text, ressources ressources) {
         // Regex pour la Ville et le Code Postal
-        String cityAndPostalCodeRegex = fileLocation.getReggexCity();
+        String cityAndPostalCodeRegex = ressources.getReggexCity();
         Pattern cityAndPostalCodePattern = Pattern.compile(cityAndPostalCodeRegex);
         Matcher cityAndPostalCodeMatcher = cityAndPostalCodePattern.matcher(text);
         return cityAndPostalCodeMatcher.find() ? cityAndPostalCodeMatcher.group().trim() : "null";
     }
 
     //méthode permettant d'extraire du texte brut la date
-    public static String extractDate(String text, FileLocation filelocation) {
+    public static String extractDate(String text, ressources ressources) {
         // Regex pour la Date
-        String dateRegex = filelocation.getReggexDate();
+        String dateRegex = ressources.getReggexDate();
         Pattern datePattern = Pattern.compile(dateRegex);
         Matcher dateMatcher = datePattern.matcher(text);
         return dateMatcher.find() ? dateMatcher.group().trim() : "null";
