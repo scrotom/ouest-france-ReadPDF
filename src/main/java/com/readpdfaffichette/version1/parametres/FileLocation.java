@@ -12,9 +12,6 @@ public class FileLocation {
 
     @Value("${file.saveplace}")
     private String fileSaveplace;
-
-    @Value("${docHtml.saveplace}")
-    private Path docHtmlSaveplace;
     
     @Value("${styleCss.saveplace}")
     private Path styleCssSaveplace;
@@ -53,10 +50,6 @@ public class FileLocation {
 
     public String getSaveplace() {
         return fileSaveplace;
-    }
-
-    public Path getDocHtmlSaveplace() {
-        return docHtmlSaveplace;
     }
 
     public Path getStyleCssSaveplace() {

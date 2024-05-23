@@ -41,7 +41,6 @@ public class Version1Application {
         Files.copy(fileLocation.getTextFile1(), fileLocation.getTextFile1Saveplace(), StandardCopyOption.REPLACE_EXISTING);
 
         // Fichier texte de sortie
-        Path outputPath = Paths.get(fileLocation.getSaveplace());
         StringBuilder allTexts = new StringBuilder();
 
         // parcours tout les fichiers du dossier a partir de l'endroit spécifié par fileLocation (transformé en path).
@@ -85,24 +84,42 @@ public class Version1Application {
         document.close();
 
         // Séparer les différentes parties du texte
-        String titles = extractTitles(text, fileLocation);
+        String[] titles = extractTitles(text, fileLocation);
+        String titles1 = titles[0];
+        String titles2 = titles.length > 1 ? titles[1] : "vide";
         String cityAndPostalCode = extractCityAndPostalCode(text, fileLocation);
         String date = extractDate(text, fileLocation);
 
         // Concaténer les informations triées
-        System.err.println(text);
-
-        String sortedText2 = "<tr><th>" + date + "</th><th>" + titles + "</th><th>" + cityAndPostalCode + "</th></tr>";
-        
-        return sortedText2;
+        String sortedText = "<tr><th>" + date + "</th><th>" + titles1 + "</th><th>" + titles2 + "</th><th>"+ cityAndPostalCode + "</th></tr>";
+       
+        return sortedText;
     }
 
-    public static String extractTitles(String text, FileLocation fileLocation) {
+    public static String[] extractTitles(String text, FileLocation fileLocation) {
         // Regex pour les Titres
         String titlesRegex = fileLocation.getReggexTitles();
         Pattern titlesPattern = Pattern.compile(titlesRegex, Pattern.DOTALL);
         Matcher titlesMatcher = titlesPattern.matcher(text);
-        return titlesMatcher.find() ? titlesMatcher.group(1).trim() : "null";
+        
+        if (titlesMatcher.find()) {
+            String titles = titlesMatcher.group(1).trim();
+
+            // Vérifier s'il y a un deuxième point pour séparer les titres
+            int firstDotIndex = titles.indexOf('.');
+            int secondDotIndex = titles.indexOf('.', firstDotIndex + 1);
+
+            if (secondDotIndex != -1) {
+                // Il y a un deuxième point, séparer les titres
+                String firstTitle = titles.substring(0, titles.lastIndexOf('\n', secondDotIndex) + 1).trim();
+                String secondTitle = titles.substring(titles.lastIndexOf('\n', secondDotIndex) + 1).trim();
+                return new String[] { firstTitle, secondTitle };
+            }
+
+            // Retourner le titre complet si un seul titre est présent
+            return new String[] { titles };
+        }
+        return new String[] { "null" };
     }
 
     public static String extractCityAndPostalCode(String text, FileLocation fileLocation) {
