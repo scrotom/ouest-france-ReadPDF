@@ -37,6 +37,7 @@ public class filesInfo {
     private Path mergedFile;
 
     //getter
+
     public String getLink() {
         return link;
     }
@@ -65,6 +66,8 @@ public class filesInfo {
         return textFile1Saveplace;
     }
 
+    //méthodes
+    
     //méthode permettant de combiner deux fichier texte
     public static void mergeTextFiles(Path file1Path, Path file2Path, Path combinedFilePath) throws IOException {
         // Lire le contenu des deux fichiers

@@ -32,6 +32,8 @@ public class reggex {
         return reggexDate;
     }
 
+    //méthodes 
+    
     //méthode permettant d'extraire du texte brut les titres et des les séparer si il y en a 2
     public static String[] extractTitles(String text, reggex reggex) {
         // Regex pour les Titres

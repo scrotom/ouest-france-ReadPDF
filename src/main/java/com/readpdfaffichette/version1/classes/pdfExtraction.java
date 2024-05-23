@@ -9,6 +9,8 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class pdfExtraction {
+
+    //méthodes 
     
     //méthode permettant d'extraire le texte des pdf, et de le trier pour le document html
     public static String extractTextFromPDF(File file, reggex Reggex) throws IOException {
