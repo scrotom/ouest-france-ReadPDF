@@ -77,5 +77,16 @@ public class Version1Application {
 
         //supprimer la partie1 du dossier final
         Files.delete(Filesinfo.getTextFile1Saveplace());
+
+
+
+        //test pour les test unitaires.
+        String test = "pasdetitre";
+        String[] testFin = reggex.extractTitles(test, Reggex);
+        System.out.println(testFin.length);
+        System.out.println(testFin[0]);
+
+
+
     } 
 }

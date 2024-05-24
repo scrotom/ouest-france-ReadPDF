@@ -38,7 +38,7 @@ public class pdfExtraction {
         String[] titles = reggex.extractTitles(text, Reggex);
         String titles1 = titles[1];
         String titles1Subject = titles[0];
-        String titles2 = titles.length > 2 ? titles[3] : "";
+        String titles2 = titles.length > 2 ? titles[3] : "<br>";
         String titles2Subject = titles.length > 2 ? titles[2] : "";
         String cityAndPostalCode = reggex.extractCityAndPostalCode(text, Reggex);
         String date = reggex.extractDate(text, Reggex);

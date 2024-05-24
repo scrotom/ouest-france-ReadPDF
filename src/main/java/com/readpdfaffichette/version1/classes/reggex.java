@@ -28,17 +28,29 @@ public class reggex {
     @Value("${reggex.date}")
     private String reggexDate;
 
-    //getter
+    //getters et setters
     public String getReggexTitles() {
         return reggexTitles;
+    }
+
+    public void setReggexTitles(String reggexTitles) {
+        this.reggexTitles = reggexTitles;
     }
 
     public String getReggexCity() {
         return reggexCity;
     }
 
+    public void setReggexCity(String reggexCity) {
+        this.reggexCity = reggexCity;
+    }
+
     public String getReggexDate() {
         return reggexDate;
+    }
+
+    public void setReggexDate(String reggexDate) {
+        this.reggexDate = reggexDate;
     }
 
     //méthodes 
@@ -78,7 +90,7 @@ public class reggex {
         String title = titles.substring(titleSubject.length()).trim();
         return new String[] { titleSubject, title};
         }
-        return new String[] { "null" };
+        return new String[] {"NoTitle"};
     }
 
     //méthode permettant d'extraire du texte brut la ville et le code postal
