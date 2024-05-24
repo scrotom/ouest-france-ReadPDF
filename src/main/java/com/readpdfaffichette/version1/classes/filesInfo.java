@@ -1,3 +1,11 @@
+/*
+ * Nom         : filesInfo.java
+ *
+ * Description : Classe permettant la gestion des fichiers lié à l'application
+ *
+ * Date        : 23/05/2024
+ * 
+ */
 package com.readpdfaffichette.version1.classes;
 
 import java.io.IOException;

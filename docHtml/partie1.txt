@@ -2,20 +2,7 @@
     <HEAD>
         <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <META>
+        <link rel="stylesheet" type="text/css" href="styles.css">
     </HEAD>
-    <style type="text/css">
-        <!-- .tableauAffichette {
-            font-family: "Ouest France Regular";
-            font-size: 14px;
-            background-color: #FFFFFF
-        }
-
-        .tableauAffichetteColore {
-            font-family: "Ouest France Regular";
-            font-size: 14px;
-            background-color: #FFCC99
-        }
-
-        --> </style>
     <BODY>
 <TABLE width="100%">

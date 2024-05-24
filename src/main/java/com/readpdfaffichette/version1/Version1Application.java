@@ -64,7 +64,6 @@ public class Version1Application {
                          String text = pdfExtraction.extractTextFromPDF(path.toFile(), Reggex);
                          allTexts.append(text).append("\n\n");
                      } catch (IOException exception) {
-                        //warning sans le system.out ??
                          exception.printStackTrace(System.out);
                      }
                  });

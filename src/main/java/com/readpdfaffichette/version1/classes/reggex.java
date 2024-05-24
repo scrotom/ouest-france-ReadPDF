@@ -1,4 +1,13 @@
-package com.readpdfaffichette.version1.classes;
+/*
+ * Nom         : reggex.java
+ *
+ * Description : Classe permettant de gérer les reggex lié au tri du texte extrait du pdf.
+ *
+ * Date        : 23/05/2024
+ * 
+ */
+
+ package com.readpdfaffichette.version1.classes;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -50,13 +59,24 @@ public class reggex {
 
             if (secondDotIndex != -1) {
                 // Il y a un deuxième point, séparer les titres
-                String firstTitle = titles.substring(0, titles.lastIndexOf('\n', secondDotIndex) + 1).trim();
-                String secondTitle = titles.substring(titles.lastIndexOf('\n', secondDotIndex) + 1).trim();
-                return new String[] { firstTitle, secondTitle };
+                String firstTitleLine = titles.substring(0, titles.lastIndexOf('\n', secondDotIndex) + 1).trim();
+                String secondTitleLine = titles.substring(titles.lastIndexOf('\n', secondDotIndex) + 1).trim();
+    
+                // Extraire les sujets
+                String firstTitleSubject = firstTitleLine.substring(0, firstTitleLine.indexOf('.') + 1).trim();
+                String secondTitleSubject = secondTitleLine.substring(0, secondTitleLine.indexOf('.') + 1).trim();
+    
+                // Retirer les sujets des titres
+                String firstTitle = firstTitleLine.substring(firstTitleSubject.length()).trim();
+                String secondTitle = secondTitleLine.substring(secondTitleSubject.length()).trim();
+
+                return new String[] { firstTitleSubject, firstTitle, secondTitleSubject, secondTitle };
             }
 
-            // Retourner le titre complet si un seul titre est présent
-            return new String[] { titles };
+        // Retourner le titre complet si un seul titre est présent
+        String titleSubject = titles.substring(0, titles.indexOf('.') + 1).trim();
+        String title = titles.substring(titleSubject.length()).trim();
+        return new String[] { titleSubject, title};
         }
         return new String[] { "null" };
     }
