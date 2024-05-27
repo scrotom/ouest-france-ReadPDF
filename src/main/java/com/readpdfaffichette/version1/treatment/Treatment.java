@@ -1,13 +1,13 @@
 /*
- * Nom         : Version1Application.java
+ * Nom         : Treatement.java
  *
- * Description : Application permettant d'effectuer les opérations dans le but de scanner des affichettes au format pdf, et d'en extraire le contenu trié dans un doc html.
+ * Description : Classe permettant de réaliser le traitement des fichiers pdf afin d'extraire leurs données et de les concaténer dans un doc html.
  *
  * Date        : 23/05/2024
  * 
  */
 
- package com.readpdfaffichette.version1;
+ package com.readpdfaffichette.version1.treatment;
 
 import java.io.File;
 import java.io.IOException;
@@ -20,20 +20,20 @@ import java.nio.file.StandardOpenOption;
 import java.util.stream.Stream;
 
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.readpdfaffichette.version1.classes.filesInfo;
-import com.readpdfaffichette.version1.classes.pdfExtraction;
-import com.readpdfaffichette.version1.classes.reggex;
+import com.readpdfaffichette.version1.ReadPDF;
+import com.readpdfaffichette.version1.exceptions.CustomAppException;
+import com.readpdfaffichette.version1.tools.FilesUtil;
+import com.readpdfaffichette.version1.tools.PdfUtil;
+import com.readpdfaffichette.version1.tools.RegexUtil;
 
-@SpringBootApplication
-public class Version1Application {
+public class Treatment {
+        public void readpdf(String[] args) throws IOException, CustomAppException{
 
-    public static void main(String[] args) throws IOException {
+        var context = SpringApplication.run(ReadPDF.class, args);
+        RegexUtil regex = context.getBean(RegexUtil.class);
+        FilesUtil Filesinfo = context.getBean(FilesUtil.class);
 
-        var context = SpringApplication.run(Version1Application.class, args);
-        reggex Reggex = context.getBean(reggex.class);
-        filesInfo Filesinfo = context.getBean(filesInfo.class);
 
         // Dossier contenant les fichiers PDF
         File folder = new File(Filesinfo.getLink());
@@ -61,9 +61,10 @@ public class Version1Application {
                  //pour chaque chemin obtenu, permet de le transformer en fichier et d'extraire le texte 
                  .forEach(path -> {
                      try {
-                         String text = pdfExtraction.extractTextFromPDF(path.toFile(), Reggex);
+                         String text = PdfUtil.extractTextFromPDF(path.toFile(), regex);
+                         text = PdfUtil.sortText(text, regex);
                          allTexts.append(text).append("\n\n");
-                     } catch (IOException exception) {
+                     } catch (CustomAppException exception) {
                          exception.printStackTrace(System.out);
                      }
                  });
@@ -73,20 +74,9 @@ public class Version1Application {
         Files.write(Filesinfo.getTextFile1Saveplace(), allTexts.toString().getBytes(StandardCharsets.UTF_8), StandardOpenOption.APPEND);
 
         //merger les deux fichier txt qui serviront à la page html
-        filesInfo.mergeTextFiles(Filesinfo.getTextFile1Saveplace(), Filesinfo.getTextFile3(), Filesinfo.getMergedFile());
+        FilesUtil.mergeTextFiles(Filesinfo.getTextFile1Saveplace(), Filesinfo.getTextFile3(), Filesinfo.getMergedFile());
 
         //supprimer la partie1 du dossier final
         Files.delete(Filesinfo.getTextFile1Saveplace());
-
-
-
-        //test pour les test unitaires.
-        String test = "pasdetitre";
-        String[] testFin = reggex.extractTitles(test, Reggex);
-        System.out.println(testFin.length);
-        System.out.println(testFin[0]);
-
-
-
-    } 
+    }     
 }
