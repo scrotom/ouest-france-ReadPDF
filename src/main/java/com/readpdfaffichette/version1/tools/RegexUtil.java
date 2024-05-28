@@ -95,7 +95,7 @@ public class RegexUtil {
             String title = titles.substring(titleSubject.length()).trim();
             return new String[] { titleSubject, title};
             }
-            return new String[] {"NoTitle"};
+            return new String[] {"pas de titre"};
 
         }catch (Exception e){
             throw new CustomAppException("erreur lors de l'extraction du(des) titres par le regex : " +e.getMessage());
@@ -110,7 +110,7 @@ public class RegexUtil {
         String cityAndPostalCodeRegex = getRegexCity();
         Pattern cityAndPostalCodePattern = Pattern.compile(cityAndPostalCodeRegex);
         Matcher cityAndPostalCodeMatcher = cityAndPostalCodePattern.matcher(text);
-        return cityAndPostalCodeMatcher.find() ? cityAndPostalCodeMatcher.group().trim() : "null";
+        return cityAndPostalCodeMatcher.find() ? cityAndPostalCodeMatcher.group().trim() : "pas de ville";
         } catch (Exception e){
             throw new CustomAppException("erreur lors de l'extraction de la ville par le regex : " +e.getMessage());
         }
@@ -123,7 +123,7 @@ public class RegexUtil {
         String dateRegex = getRegexDate();
         Pattern datePattern = Pattern.compile(dateRegex);
         Matcher dateMatcher = datePattern.matcher(text);
-        return dateMatcher.find() ? dateMatcher.group().trim() : "null";
+        return dateMatcher.find() ? dateMatcher.group().trim() : "pas de date";
         } catch (Exception e) {
             throw new CustomAppException("erreur lors de l'extraction de la date par le regex : " +e.getMessage());
         }

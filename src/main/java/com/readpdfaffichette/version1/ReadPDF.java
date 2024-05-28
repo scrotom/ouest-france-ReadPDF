@@ -18,7 +18,8 @@
  
  @SpringBootApplication
  public class ReadPDF {
- 
+
+     //execution du traitement
      public static void main(String[] args) throws IOException, CustomAppException {
          Treatment treatment = new Treatment();   
          treatment.readpdf(args);
