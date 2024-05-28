@@ -1,10 +1,9 @@
-package com.readpdfaffichette.version1.tools;
+package com.readpdfaffichette.version1.service;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import com.readpdfaffichette.version1.service.RegexService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -36,9 +35,18 @@ public class RegexServiceTest {
     }
 
     @Test
-    public void testExtractTitlesSuccess() throws CustomAppException {
+    public void testExtractTitlesSuccessWith2title() throws CustomAppException {
         String text = " Title1. \r\n Subtitle1 \r\n Title2. \r\n Subtitle2 54 -";
         String[] expectedTitles = { "Title1.", "Subtitle1", "Title2.", "Subtitle2" };
+        String[] extractedTitles = regexService.extractTitles(text);
+
+        assertArrayEquals(expectedTitles, extractedTitles);
+    }
+
+    @Test
+    public void testExtractTitlesSuccessWith1title() throws CustomAppException {
+        String text = " Title1. \r\n Subtitle1 54 -";
+        String[] expectedTitles = { "Title1.", "Subtitle1"};
         String[] extractedTitles = regexService.extractTitles(text);
 
         assertArrayEquals(expectedTitles, extractedTitles);

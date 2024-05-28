@@ -1,4 +1,4 @@
-package com.readpdfaffichette.version1.tools;
+package com.readpdfaffichette.version1.service;
 
 import java.io.File;
 import java.io.IOException;
@@ -6,8 +6,6 @@ import java.io.IOException;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import com.readpdfaffichette.version1.service.PdfService;
-import com.readpdfaffichette.version1.service.RegexService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;

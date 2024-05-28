@@ -26,60 +26,43 @@ import org.springframework.stereotype.Service;
 @Service
 public class TreatmentService {
 
-    private final RegexService regex;
-    private final FilesService file;
-    private final PdfService pdfutil;
+    private final PdfService pdfService;
+    private final FilesService filesService;
+    private final RegexService regexService;
 
-    public TreatmentService(RegexService regex, FilesService file, PdfService pdfutil) {
-        this.regex = regex;
-        this.file = file;
-        this.pdfutil = pdfutil;
+    public TreatmentService(PdfService pdfService, FilesService filesService, RegexService regexService) {
+        this.pdfService = pdfService;
+        this.filesService = filesService;
+        this.regexService = regexService;
     }
 
-    public void readpdf(String[] args) throws IOException, CustomAppException{
+    public void readpdf(String[] args) throws IOException, CustomAppException {
 
         // Dossier contenant les fichiers PDF
-        File folder = new File(file.getLink());
+        File folder = new File(filesService.getLink());
         if (!folder.isDirectory()) {
-            System.out.println("erreur : Le chemin n'ammène pas à un dossier.");
+            System.out.println("Erreur : Le chemin n'amène pas à un dossier.");
             return;
         }
 
-        //copie du fichier css
-        Files.copy(file.getStyleCssSource(), file.getStyleCssSaveplace(), StandardCopyOption.REPLACE_EXISTING);
+        // Copie du fichier CSS
+        filesService.copyFile(filesService.getStyleCssSource(), filesService.getStyleCssSaveplace());
 
-        //copie de la partie1 du doc html, afin de pouvoir le modifier ensuite
-        Files.copy(file.getTextFile1(), file.getTextFile1Saveplace(), StandardCopyOption.REPLACE_EXISTING);
+        // Copie de la partie1 du doc HTML, afin de pouvoir le modifier ensuite
+        filesService.copyFile(filesService.getTextFile1(), filesService.getTextFile1Saveplace());
 
         // Fichier texte de sortie
-        StringBuilder allTexts = new StringBuilder();
+        try (Stream<Path> paths = Files.walk(Paths.get(filesService.getLink()))) {
+            StringBuilder allTexts = pdfService.processPdfs(paths, regexService);
 
-        // parcours tout les fichiers du dossier a partir de l'endroit spécifié par ressources (transformé en path).
-        try (Stream<Path> paths = Files.walk(Paths.get(file.getLink()))) {
-
-            //permet de ne garder que les fichiers en .pdf
-            paths.filter(Files::isRegularFile)
-                 .filter(path -> path.toString().endsWith(".pdf"))
-                 
-                 //pour chaque chemin obtenu, permet de le transformer en fichier et d'extraire le texte 
-                 .forEach(path -> {
-                     try {
-                         String text = pdfutil.extractTextFromPDF(path.toFile(), regex);
-                         text = pdfutil.sortText(text, regex);
-                         allTexts.append(text).append("\n\n");
-                     } catch (CustomAppException exception) {
-                         exception.printStackTrace(System.out);
-                     }
-                 });
+            // Ajouter le texte extrait à la fin du fichier texte existant (partie1 : début du code HTML)
+            filesService.writeFile(filesService.getTextFile1Saveplace(), allTexts.toString());
         }
 
-        // ajouter le texte extrait à la fin du fichier texte existant (partie1 : début du code html)
-        Files.write(file.getTextFile1Saveplace(), allTexts.toString().getBytes(StandardCharsets.UTF_8), StandardOpenOption.APPEND);
+        // Merger les deux fichiers txt qui serviront à la page HTML
+        filesService.mergeTextFiles(filesService.getTextFile1Saveplace(), filesService.getTextFile3(), filesService.getMergedFile());
 
-        //merger les deux fichier txt qui serviront à la page html
-        file.mergeTextFiles(file.getTextFile1Saveplace(), file.getTextFile3(), file.getMergedFile());
-
-        //supprimer la partie1 du dossier final
-        Files.delete(file.getTextFile1Saveplace());
-    }     
+        // Supprimer la partie1 du dossier final
+        filesService.deleteFile(filesService.getTextFile1Saveplace());
+    }
 }

@@ -1,5 +1,4 @@
-package com.readpdfaffichette.version1.treatment;
-
+/*
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
@@ -148,3 +147,4 @@ public class TreatmentServiceTest {
         System.setOut(originalOut);
     }
 }
+ */

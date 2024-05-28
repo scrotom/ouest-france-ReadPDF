@@ -12,11 +12,15 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
+import java.nio.file.StandardOpenOption;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import com.readpdfaffichette.version1.exceptions.CustomAppException;
+
+import javax.annotation.processing.Generated;
 
 @Component
 public class FilesService {
@@ -47,7 +51,6 @@ public class FilesService {
     private Path mergedFile;
 
     //getter
-
     public String getLink() {
         return link;
     }
@@ -77,7 +80,22 @@ public class FilesService {
     }
 
     //méthodes
- 
+
+    //méthode permettant de supprimer un fichier
+    public void deleteFile(Path filePath) throws IOException {
+        Files.delete(filePath);
+    }
+
+    //méthode permettant de copier un fichier d'un endroit a un autre
+    public void copyFile(Path source, Path destination) throws IOException {
+        Files.copy(source, destination, StandardCopyOption.REPLACE_EXISTING);
+    }
+
+    //méthode permettant d'écrire dans un fichier
+    public void writeFile(Path filePath, String content) throws IOException {
+        Files.writeString(filePath, content, StandardOpenOption.APPEND);
+    }
+
     //méthode permettant de combiner deux fichier texte
     public void mergeTextFiles(Path file1Path, Path file2Path, Path combinedFilePath) throws IOException, CustomAppException {
         try {
