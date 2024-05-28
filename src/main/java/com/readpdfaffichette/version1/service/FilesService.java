@@ -6,7 +6,7 @@
  * Date        : 23/05/2024
  * 
  */
-package com.readpdfaffichette.version1.tools;
+package com.readpdfaffichette.version1.service;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -19,8 +19,7 @@ import org.springframework.stereotype.Component;
 import com.readpdfaffichette.version1.exceptions.CustomAppException;
 
 @Component
-
-public class FilesUtil {
+public class FilesService {
 
     //récupératon du chemin vers le dossier ou sont placé les pdf
     @Value("${inputRepository.path}")
@@ -78,9 +77,9 @@ public class FilesUtil {
     }
 
     //méthodes
-    
+ 
     //méthode permettant de combiner deux fichier texte
-    public static void mergeTextFiles(Path file1Path, Path file2Path, Path combinedFilePath) throws IOException, CustomAppException {
+    public void mergeTextFiles(Path file1Path, Path file2Path, Path combinedFilePath) throws IOException, CustomAppException {
         try {
         // Lire le contenu des deux fichiers
         String file1Content = Files.readString(file1Path, StandardCharsets.UTF_8);

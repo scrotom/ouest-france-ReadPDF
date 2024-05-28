@@ -7,7 +7,7 @@
  * 
  */
 
- package com.readpdfaffichette.version1.tools;
+ package com.readpdfaffichette.version1.service;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -18,8 +18,7 @@ import org.springframework.stereotype.Component;
 import com.readpdfaffichette.version1.exceptions.CustomAppException;
 
 @Component
-
-public class RegexUtil {
+public class RegexService {
 
     //récupération des regex
     @Value("${regex.titles}")
@@ -83,50 +82,56 @@ public class RegexUtil {
                     String firstTitleSubject = firstTitleLine.substring(0, firstTitleLine.indexOf('.') + 1).trim();
                     String secondTitleSubject = secondTitleLine.substring(0, secondTitleLine.indexOf('.') + 1).trim();
     
-                   // Retirer les sujets des titres
+                    // Retirer les sujets des titres
                     String firstTitle = firstTitleLine.substring(firstTitleSubject.length()).trim();
                     String secondTitle = secondTitleLine.substring(secondTitleSubject.length()).trim();
 
                     return new String[] { firstTitleSubject, firstTitle, secondTitleSubject, secondTitle };
                 }
 
-            // Retourner le titre complet si un seul titre est présent
-            String titleSubject = titles.substring(0, titles.indexOf('.') + 1).trim();
-            String title = titles.substring(titleSubject.length()).trim();
-            return new String[] { titleSubject, title};
+                // Retourner le titre complet si un seul titre est présent
+                String titleSubject = titles.substring(0, titles.indexOf('.') + 1).trim();
+                String title = titles.substring(titleSubject.length()).trim();
+                return new String[] { titleSubject, title };
+            } else {
+                throw new CustomAppException("Aucun titre trouvé dans le texte.");
             }
-            return new String[] {"pas de titre"};
-
-        }catch (Exception e){
-            throw new CustomAppException("erreur lors de l'extraction du(des) titres par le regex : " +e.getMessage());
+        } catch (Exception e) {
+            throw new CustomAppException("Erreur lors de l'extraction des titres par le regex : " + e.getMessage());
         }
-
     }
 
     //méthode permettant d'extraire du texte brut la ville et le code postal
     public String extractCityAndPostalCode(String text) throws CustomAppException{
         try {
-        // Regex pour la Ville et le Code Postal
-        String cityAndPostalCodeRegex = getRegexCity();
-        Pattern cityAndPostalCodePattern = Pattern.compile(cityAndPostalCodeRegex);
-        Matcher cityAndPostalCodeMatcher = cityAndPostalCodePattern.matcher(text);
-        return cityAndPostalCodeMatcher.find() ? cityAndPostalCodeMatcher.group().trim() : "pas de ville";
+            // Regex pour la Ville et le Code Postal
+            String cityAndPostalCodeRegex = getRegexCity();
+            Pattern cityAndPostalCodePattern = Pattern.compile(cityAndPostalCodeRegex);
+            Matcher cityAndPostalCodeMatcher = cityAndPostalCodePattern.matcher(text);
+            if (cityAndPostalCodeMatcher.find()) {
+                return cityAndPostalCodeMatcher.group().trim();
+            } else {
+                throw new CustomAppException("Aucune ville trouvée dans le texte.");
+            }
         } catch (Exception e){
-            throw new CustomAppException("erreur lors de l'extraction de la ville par le regex : " +e.getMessage());
+            throw new CustomAppException("Erreur lors de l'extraction de la ville par le regex : " + e.getMessage());
         }
     }
 
     //méthode permettant d'extraire du texte brut la date
-    public String extractDate(String text) throws CustomAppException{
-        try{
-        // Regex pour la Date
-        String dateRegex = getRegexDate();
-        Pattern datePattern = Pattern.compile(dateRegex);
-        Matcher dateMatcher = datePattern.matcher(text);
-        return dateMatcher.find() ? dateMatcher.group().trim() : "pas de date";
+    public String extractDate(String text) throws CustomAppException {
+        try {
+            // Regex pour la Date
+            String dateRegex = getRegexDate();
+            Pattern datePattern = Pattern.compile(dateRegex);
+            Matcher dateMatcher = datePattern.matcher(text);
+            if (dateMatcher.find()) {
+                return dateMatcher.group().trim();
+            } else {
+                throw new CustomAppException("Aucune date trouvée dans le texte.");
+            }
         } catch (Exception e) {
-            throw new CustomAppException("erreur lors de l'extraction de la date par le regex : " +e.getMessage());
+            throw new CustomAppException("Erreur lors de l'extraction de la date par le regex : " + e.getMessage());
         }
-
     }
 }

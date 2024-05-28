@@ -7,7 +7,7 @@
  * 
  */
 
-package com.readpdfaffichette.version1.tools;
+package com.readpdfaffichette.version1.service;
 
 import java.io.File;
 import java.io.IOException;
@@ -19,10 +19,10 @@ import org.springframework.stereotype.Component;
 import com.readpdfaffichette.version1.exceptions.CustomAppException;
 
 @Component
-public class PdfUtil {
+public class PdfService {
     
     //méthode permettant d'extraire le texte des pdf
-    public static String extractTextFromPDF(File file, RegexUtil regex) throws CustomAppException {
+    public String extractTextFromPDF(File file, RegexService regex) throws CustomAppException {
 
         String text;
         // Instancier la classe PDFTextStripper
@@ -39,7 +39,7 @@ public class PdfUtil {
     }
 
     //méthode permettant de trier le texte extrait des pdf
-    public static String sortText (String text, RegexUtil regex) throws CustomAppException {
+    public String sortText (String text, RegexService regex) throws CustomAppException {
 
         try {
         // Séparer les différentes parties du texte

@@ -1,5 +1,5 @@
 /*
- * Nom         : Version1Application.java
+ * Nom         : ReadPDF.java
  *
  * Description : Application permettant d'effectuer les opérations dans le but de scanner des affichettes au format pdf, et d'en extraire le contenu trié dans un doc html.
  *
@@ -11,17 +11,19 @@
 
  import java.io.IOException;
 
+ import org.springframework.boot.SpringApplication;
  import org.springframework.boot.autoconfigure.SpringBootApplication;
 
  import com.readpdfaffichette.version1.exceptions.CustomAppException;
- import com.readpdfaffichette.version1.treatment.Treatment;
- 
- @SpringBootApplication
+ import org.springframework.context.ConfigurableApplicationContext;
+ import org.springframework.scheduling.annotation.EnableScheduling;
+
+@SpringBootApplication
+@EnableScheduling
  public class ReadPDF {
 
      //execution du traitement
      public static void main(String[] args) throws IOException, CustomAppException {
-         Treatment treatment = new Treatment();   
-         treatment.readpdf(args);
+         SpringApplication.run(ReadPDF.class, args);
      }
  }

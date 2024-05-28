@@ -3,6 +3,8 @@ package com.readpdfaffichette.version1.tools;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import com.readpdfaffichette.version1.service.RegexService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -11,10 +13,10 @@ import org.springframework.beans.factory.annotation.Value;
 
 import com.readpdfaffichette.version1.exceptions.CustomAppException;
 
-public class RegexUtilTest {
+public class RegexServiceTest {
 
     @InjectMocks
-    private RegexUtil regexUtil;
+    private RegexService regexService;
 
     @Value("${regex.titles}")
     private String regexTitles = "(.*?)(?=(?:PHOTO :|\\d{2} -))";
@@ -28,16 +30,16 @@ public class RegexUtilTest {
     @BeforeEach
     public void setUp() {
         MockitoAnnotations.openMocks(this);
-        regexUtil.setRegexTitles(regexTitles);
-        regexUtil.setRegexCity(regexCity);
-        regexUtil.setRegexDate(regexDate);
+        regexService.setRegexTitles(regexTitles);
+        regexService.setRegexCity(regexCity);
+        regexService.setRegexDate(regexDate);
     }
 
     @Test
     public void testExtractTitlesSuccess() throws CustomAppException {
-        String text = "Title1.\nSubtitle1\nTitle2.\nSubtitle2";
+        String text = " Title1. \r\n Subtitle1 \r\n Title2. \r\n Subtitle2 54 -";
         String[] expectedTitles = { "Title1.", "Subtitle1", "Title2.", "Subtitle2" };
-        String[] extractedTitles = regexUtil.extractTitles(text);
+        String[] extractedTitles = regexService.extractTitles(text);
 
         assertArrayEquals(expectedTitles, extractedTitles);
     }
@@ -46,14 +48,14 @@ public class RegexUtilTest {
     public void testExtractTitlesFailure() {
         String text = "";
 
-        assertThrows(CustomAppException.class, () -> regexUtil.extractTitles(text));
+        assertThrows(CustomAppException.class, () -> regexService.extractTitles(text));
     }
 
     @Test
     public void testExtractCityAndPostalCodeSuccess() throws CustomAppException {
         String text = "56 - CityName";
         String expectedCityAndPostalCode = "56 - CityName";
-        String extractedCityAndPostalCode = regexUtil.extractCityAndPostalCode(text);
+        String extractedCityAndPostalCode = regexService.extractCityAndPostalCode(text);
 
         assertEquals(expectedCityAndPostalCode, extractedCityAndPostalCode);
     }
@@ -62,14 +64,14 @@ public class RegexUtilTest {
     public void testExtractCityAndPostalCodeFailure() {
         String text = "";
 
-        assertThrows(CustomAppException.class, () -> regexUtil.extractCityAndPostalCode(text));
+        assertThrows(CustomAppException.class, () -> regexService.extractCityAndPostalCode(text));
     }
 
     @Test
     public void testExtractDateSuccess() throws CustomAppException {
         String text = "vendredi 21 mai 2024";
         String expectedDate = "vendredi 21 mai 2024";
-        String extractedDate = regexUtil.extractDate(text);
+        String extractedDate = regexService.extractDate(text);
 
         assertEquals(expectedDate, extractedDate);
     }
@@ -78,7 +80,7 @@ public class RegexUtilTest {
     public void testExtractDateFailure() {
         String text = "";
 
-        assertThrows(CustomAppException.class, () -> regexUtil.extractDate(text));
+        assertThrows(CustomAppException.class, () -> regexService.extractDate(text));
     }
 }
 
