@@ -1,28 +1,25 @@
 package com.readpdfaffichette.version1.service;
 
-import com.readpdfaffichette.version1.exceptions.CustomAppException;
-import org.apache.pdfbox.pdmodel.PDDocument;
-import org.apache.pdfbox.pdmodel.PDPage;
-import org.apache.pdfbox.pdmodel.PDPageContentStream;
-import org.apache.pdfbox.pdmodel.font.PDType1Font;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
-
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
 
-@ExtendWith(MockitoExtension.class)
+import com.readpdfaffichette.version1.exceptions.CustomAppException;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+
 public class TreatmentServiceTest {
+
+    @InjectMocks
+    private TreatmentService treatmentService;
 
     @Mock
     private PdfService pdfService;
@@ -33,76 +30,91 @@ public class TreatmentServiceTest {
     @Mock
     private RegexService regexService;
 
-    @InjectMocks
-    private TreatmentService treatmentService;
-
-    private Path tempDir;
-    private Path textFile1;
-    private Path textFile3;
-    private Path mergedFile;
-
     @BeforeEach
     public void setUp() throws IOException {
-        tempDir = Files.createTempDirectory("testDir");
-        textFile1 = tempDir.resolve("partie1.txt");
-        textFile3 = tempDir.resolve("partie3.txt");
-        mergedFile = tempDir.resolve("merged.html");
+        MockitoAnnotations.openMocks(this);
+    }
 
-        // Mock the FilesService methods
-        when(filesService.getLink()).thenReturn(tempDir.toString());
+    @Test
+    public void testReadpdfSuccess() throws IOException, CustomAppException {
+        String[] args = {};
+        File folder = new File("src/test/resources/");
+        Path textFile1 = Paths.get("src/test/resources/partie1.txt");
+        Path textFile1Saveplace = Paths.get("src/test/resources/partie1_saved.txt");
+        Path textFile3 = Paths.get("src/test/resources/partie3.txt");
+        Path mergedFile = Paths.get("src/test/resources/merged.html");
+
+        when(filesService.getLink()).thenReturn(folder.getPath());
         when(filesService.getTextFile1()).thenReturn(textFile1);
-        when(filesService.getTextFile1Saveplace()).thenReturn(tempDir.resolve("savedPartie1.txt"));
+        when(filesService.getTextFile1Saveplace()).thenReturn(textFile1Saveplace);
         when(filesService.getTextFile3()).thenReturn(textFile3);
         when(filesService.getMergedFile()).thenReturn(mergedFile);
 
-        Files.write(textFile1, "Partie 1 content".getBytes());
-        Files.write(textFile3, "Partie 3 content".getBytes());
+        doNothing().when(filesService).copyFile(textFile1, textFile1Saveplace);
+        doNothing().when(filesService).writeFile(any(Path.class), anyString());
+        doNothing().when(filesService).mergeTextFiles(textFile1Saveplace, textFile3, mergedFile);
+        doNothing().when(filesService).deleteFile(textFile1Saveplace);
+
+        StringBuilder processedText = new StringBuilder("Processed text");
+        when(pdfService.processPdfs(any(Stream.class), eq(regexService))).thenReturn(processedText);
+
+        treatmentService.readpdf(args);
+
+        verify(filesService, times(1)).copyFile(textFile1, textFile1Saveplace);
+        verify(pdfService, times(1)).processPdfs(any(Stream.class), eq(regexService));
+        verify(filesService, times(1)).writeFile(textFile1Saveplace, processedText.toString());
+        verify(filesService, times(1)).mergeTextFiles(textFile1Saveplace, textFile3, mergedFile);
+        verify(filesService, times(1)).deleteFile(textFile1Saveplace);
     }
 
     @Test
-    public void testReadPdfSuccess() throws IOException, CustomAppException {
-        Path pdfFile = tempDir.resolve("test.pdf");
-        createSamplePdf(pdfFile, "PDF content");
+    public void testReadpdfFolderNotDirectory() throws IOException, CustomAppException {
+        String[] args = {};
+        File nonFolder = new File("src/test/resources/nonFolder.txt");
 
-        try (Stream<Path> paths = Files.walk(tempDir)) {
-            when(pdfService.processPdfs(paths, regexService)).thenReturn(new StringBuilder("Extracted text\n"));
+        when(filesService.getLink()).thenReturn(nonFolder.getPath());
 
-            treatmentService.readpdf(new String[]{});
-
-            verify(filesService).copyFile(textFile1, tempDir.resolve("savedPartie1.txt"));
-            verify(filesService).writeFile(tempDir.resolve("savedPartie1.txt"), "Extracted text\n");
-            verify(filesService).mergeTextFiles(tempDir.resolve("savedPartie1.txt"), textFile3, mergedFile);
-            verify(filesService).deleteFile(tempDir.resolve("savedPartie1.txt"));
-        }
-    }
-
-    @Test
-    public void testReadPdfFailure() throws IOException, CustomAppException {
-        Path invalidDir = tempDir.resolve("invalidDir");
-        when(filesService.getLink()).thenReturn(invalidDir.toString());
-
-        treatmentService.readpdf(new String[]{});
+        treatmentService.readpdf(args);
 
         verify(filesService, never()).copyFile(any(Path.class), any(Path.class));
+        verify(pdfService, never()).processPdfs(any(Stream.class), eq(regexService));
         verify(filesService, never()).writeFile(any(Path.class), anyString());
         verify(filesService, never()).mergeTextFiles(any(Path.class), any(Path.class), any(Path.class));
         verify(filesService, never()).deleteFile(any(Path.class));
     }
 
-    private void createSamplePdf(Path filePath, String content) throws IOException {
-        try (PDDocument document = new PDDocument()) {
-            PDPage page = new PDPage();
-            document.addPage(page);
+    @Test
+    public void testReadpdfExceptionDuringProcessing() throws IOException, CustomAppException {
+        String[] args = {};
+        File folder = new File("src/test/resources/");
+        Path textFile1 = Paths.get("src/test/resources/partie1.txt");
+        Path textFile1Saveplace = Paths.get("src/test/resources/partie1_saved.txt");
+        Path textFile3 = Paths.get("src/test/resources/partie3.txt");
+        Path mergedFile = Paths.get("src/test/resources/merged.html");
 
-            try (PDPageContentStream contentStream = new PDPageContentStream(document, page)) {
-                contentStream.beginText();
-                contentStream.setFont(PDType1Font.HELVETICA, 12);
-                contentStream.newLineAtOffset(100, 700);
-                contentStream.showText(content);
-                contentStream.endText();
-            }
+        when(filesService.getLink()).thenReturn(folder.getPath());
+        when(filesService.getTextFile1()).thenReturn(textFile1);
+        when(filesService.getTextFile1Saveplace()).thenReturn(textFile1Saveplace);
+        when(filesService.getTextFile3()).thenReturn(textFile3);
+        when(filesService.getMergedFile()).thenReturn(mergedFile);
 
-            document.save(filePath.toFile());
+        doNothing().when(filesService).copyFile(textFile1, textFile1Saveplace);
+
+        // Ensure folder exists and is recognized as a directory
+        if (!folder.exists()) {
+            folder.mkdirs();
         }
+
+        when(pdfService.processPdfs(any(Stream.class), eq(regexService))).thenThrow(new CustomAppException("Processing error"));
+
+        assertThrows(CustomAppException.class, () -> {
+            treatmentService.readpdf(args);
+        });
+
+        verify(filesService, times(1)).copyFile(textFile1, textFile1Saveplace);
+        verify(pdfService, times(1)).processPdfs(any(Stream.class), eq(regexService));
+        verify(filesService, never()).writeFile(any(Path.class), anyString());
+        verify(filesService, never()).mergeTextFiles(any(Path.class), any(Path.class), any(Path.class));
+        verify(filesService, never()).deleteFile(any(Path.class));
     }
 }

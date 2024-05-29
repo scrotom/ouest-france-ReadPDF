@@ -11,12 +11,9 @@
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
-import java.nio.file.StandardOpenOption;
 import java.util.stream.Stream;
 
 import com.readpdfaffichette.version1.exceptions.CustomAppException;
@@ -61,5 +58,7 @@ public class TreatmentService {
 
         // Supprimer la partie1 du dossier final
         filesService.deleteFile(filesService.getTextFile1Saveplace());
+
     }
 }
+

@@ -2,19 +2,13 @@ package com.readpdfaffichette.version1.service;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import org.apache.pdfbox.pdmodel.PDDocument;
-import org.apache.pdfbox.pdmodel.PDPage;
-import org.apache.pdfbox.pdmodel.PDPageContentStream;
-import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -29,14 +23,15 @@ public class PdfServiceTest {
     private PdfService pdfService;
 
     @Mock
-    private PdfService pdfService2;
-
-    @Mock
     private RegexService regexService;
 
+    @Mock
+    private PdfService pdfServiceMock;
+
     @BeforeEach
-    public void setUp() {
+    public void setUp() throws IOException {
         MockitoAnnotations.openMocks(this);
+
     }
 
     @Test
@@ -60,7 +55,7 @@ public class PdfServiceTest {
         String inputText = "Sample text for sorting.";
 
         // Mock the responses for the regex methods
-        when(regexService.extractTitles(inputText)).thenReturn(new String[] {"Title1.", "Subtitle1", "Title2.", "Subtitle2"});
+        when(regexService.extractTitles(inputText)).thenReturn(new String[]{"Title1.", "Subtitle1", "Title2.", "Subtitle2"});
         when(regexService.extractCityAndPostalCode(inputText)).thenReturn("City - 12345");
         when(regexService.extractDate(inputText)).thenReturn("January 1, 2024");
 
@@ -79,60 +74,49 @@ public class PdfServiceTest {
 
         assertThrows(CustomAppException.class, () -> pdfService.sortText(inputText, regexService));
     }
-    /*
+
     @Test
-    @DisplayName("Test processPdfs method")
-    public void testProcessPdfs() throws IOException, CustomAppException {
-        Path tempDir = Files.createTempDirectory("testPdfs");
-        Path pdfFile1 = tempDir.resolve("file1.pdf");
-        Path pdfFile2 = tempDir.resolve("file2.pdf");
+    public void testProcessPdfsSuccess() throws IOException, CustomAppException {
+        Path pdfPath = Path.of("C:/Users/tom.lefevrebonzon/Desktop/projetAffichettes-readpdf/gitkraken/projet-1-ouest-france-readpdf/src/test/java/com/readpdfaffichette/version1/resources/fichier1.pdf");
 
-        createSamplePdf(pdfFile1, "titre. retour en\n arriere\n55 - rennes\nmardi 24 mai 2023");
-        createSamplePdf(pdfFile2, "titre. retour en\n avant\n55 - rennes\nmardi 24 mai 2024");
+        String extractedText = "The Voice. Un casting lors d’un spectacle à Auray Belle-Île. L’épicier solidaire détourne 348 000 € 56 - Auray mercredi 29 mai 2024";
+        String sortedText = "<TR><TD class=\"tableauAffichette\" width=\"25%\">56 - Auray</TD><TD class=\"tableauAffichette\" width=\"25%\">mercredi 29 mai 2024</TD><TD class=\"tableauAffichette\"><u>The Voice.</u> Un casting lors d’un spectacle à Auray<BR><u>Belle-Île.</u> L’épicier solidaire détourne 348 000 €</TD></TR>";
 
-        try (Stream<Path> paths = Files.walk(tempDir)) {
-            // Mock the extractTextFromPDF and sortText methods
-            when(pdfService2.extractTextFromPDF(pdfFile1.toFile(), regexService)).thenReturn("Extracted text 1");
-            when(pdfService2.extractTextFromPDF(pdfFile2.toFile(), regexService)).thenReturn("Extracted text 2");
-            when(pdfService2.sortText("Extracted text 1", regexService)).thenReturn("Sorted text 1");
-            when(pdfService2.sortText("Extracted text 2", regexService)).thenReturn("Sorted text 2");
+        when(regexService.extractTitles(extractedText)).thenReturn(new String[]{"The Voice.", "Un casting lors d’un spectacle à Auray", "Belle-Île.", "L’épicier solidaire détourne 348 000 €"});
+        when(regexService.extractCityAndPostalCode(extractedText)).thenReturn("56 - Auray");
+        when(regexService.extractDate(extractedText)).thenReturn("mercredi 29 mai 2024");
 
-            StringBuilder result = pdfService.processPdfs(paths, regexService);
+        // Mock the PDF extraction and sorting
+        when(pdfServiceMock.extractTextFromPDF(pdfPath.toFile(), regexService)).thenReturn(extractedText);
+        when(pdfServiceMock.sortText(extractedText, regexService)).thenReturn(sortedText);
 
-            String expected = "Sorted text 1\n\nSorted text 2\n\n";
-            assertEquals(expected, result.toString());
+        try (Stream<Path> paths = Stream.of(pdfPath)) {
+            // Use pdfServiceMock instead of pdfService
+            when(pdfServiceMock.processPdfs(paths, regexService)).thenCallRealMethod();
+            StringBuilder result = pdfServiceMock.processPdfs(paths, regexService);
+            assertEquals(sortedText + "\n\n", result.toString());
         }
-
-        // Clean up
-        Files.walk(tempDir).sorted((a, b) -> b.compareTo(a)).forEach(p -> {
-            try {
-                Files.delete(p);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
     }
 
-    private void createSamplePdf(Path filePath, String content) throws IOException {
-        try (PDDocument document = new PDDocument()) {
-            PDPage page = new PDPage();
-            document.addPage(page);
+    @Test
+    public void testProcessPdfsWithNonPdfFile() throws IOException, CustomAppException {
+        Path nonPdfPath = Path.of("src/test/resources/test.txt");
 
-            try (PDPageContentStream contentStream = new PDPageContentStream(document, page)) {
-                contentStream.beginText();
-                contentStream.setFont(PDType1Font.HELVETICA, 12);
-                contentStream.newLineAtOffset(100, 700);
-
-                String[] lines = content.split("\n");
-                for (String line : lines) {
-                    contentStream.showText(line);
-                    contentStream.newLineAtOffset(0, -15);  // Adjust the vertical position for each new line
-                }
-
-                contentStream.endText();
-            }
-
-            document.save(filePath.toFile());
+        try (Stream<Path> paths = Stream.of(nonPdfPath)) {
+            StringBuilder result = pdfService.processPdfs(paths, regexService);
+            assertEquals("", result.toString());
         }
-    }*/
+    }
+
+    @Test
+    public void testProcessPdfsWithException() throws IOException, CustomAppException {
+        Path pdfPath = Path.of("C:/Users/tom.lefevrebonzon/Desktop/projetAffichettes-readpdf/gitkraken/projet-1-ouest-france-readpdf/src/test/java/com/readpdfaffichette/version1/resources/fichier1.pdf");
+
+        when(pdfService.extractTextFromPDF(pdfPath.toFile(), regexService)).thenThrow(new CustomAppException("Error extracting text"));
+
+        try (Stream<Path> paths = Stream.of(pdfPath)) {
+            StringBuilder result = pdfService.processPdfs(paths, regexService);
+            assertEquals("", result.toString());
+        }
+    }
 }
