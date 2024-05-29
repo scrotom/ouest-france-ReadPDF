@@ -100,7 +100,6 @@ public class TreatmentServiceTest {
 
         doNothing().when(filesService).copyFile(textFile1, textFile1Saveplace);
 
-        // Ensure folder exists and is recognized as a directory
         if (!folder.exists()) {
             folder.mkdirs();
         }

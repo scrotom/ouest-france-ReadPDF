@@ -19,7 +19,6 @@
  import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
-@EnableScheduling
  public class ReadPDF {
 
      //execution du traitement

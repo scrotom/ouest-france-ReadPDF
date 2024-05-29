@@ -68,6 +68,7 @@ public class FilesServiceTest {
     }
 
     @Test
+    @DisplayName("test pour vérifier si le méthode MergeTextFiles combine bien le contenu de deux fichier.")
     public void testMergeTextFilesSuccess() throws IOException, CustomAppException {
         // Merge the files
         filesService.mergeTextFiles(file1, file2, combinedFile);
@@ -80,12 +81,13 @@ public class FilesServiceTest {
         assertEquals(expectedContent, combinedContent);
     }
 
+
     @Test
+    @DisplayName("test pour vérifier que la méthode MergeText renvoie bien une erreur, si l'un des deux fichier n'existe pas de base")
     public void testMergeTextFilesIOException() {
-        // Create a path to a non-existent file
+
         Path nonExistentFile = Path.of("test.txt");
 
-        // Verify that the CustomAppException is thrown when merging with a non-existent file
         CustomAppException exception = assertThrows(CustomAppException.class, () ->
                 filesService.mergeTextFiles(nonExistentFile, file2, combinedFile)
         );
@@ -93,34 +95,47 @@ public class FilesServiceTest {
         assertEquals("erreur lors de l'assemblage des deux fichiers : " + "test.txt", exception.getMessage());
     }
     @Test
-    @DisplayName("Test deleteFile method")
+    @DisplayName("test pour vérifier que la méthode DeleteFile supprime bien le fichier ")
     public void testDeleteFile() throws IOException {
-        // Ensure the source file exists
+
         assertEquals(true, Files.exists(sourceFile));
 
-        // Delete the file
         filesService.deleteFile(sourceFile);
 
-        // Ensure the file no longer exists
         assertEquals(false, Files.exists(sourceFile));
     }
 
     @Test
-    @DisplayName("Test copyFile method")
+    @DisplayName("test pour vérifier que la méthode DeleteFile renvoie bien une erreur si le fichier n'existe pas de base ")
+    public void testDeleteFileNonExistent() {
+        Path nonExistentFile = tempDirectory.resolve("nonExistent.txt");
+
+        assertThrows(IOException.class, () -> filesService.deleteFile(nonExistentFile));
+    }
+
+    @Test
+    @DisplayName("test pour vérifier que la méthode CopyFile copie bien le fichier")
     public void testCopyFile() throws IOException {
-        // Ensure the destination file does not exist initially
+
         assertEquals(false, Files.exists(destinationFile));
 
-        // Copy the file
         filesService.copyFile(sourceFile, destinationFile);
 
-        // Ensure the destination file exists and has the correct content
         assertEquals(true, Files.exists(destinationFile));
         assertEquals("Initial content", Files.readString(destinationFile, StandardCharsets.UTF_8));
     }
 
     @Test
-    @DisplayName("Test writeFile method")
+    @DisplayName("test pour vérifier que la méthode CopyFile renvoie bien une erreur si le fichier n'existe pas de base")
+    public void testCopyFileNonExistentSource() {
+        Path nonExistentFile = tempDirectory.resolve("nonExistent.txt");
+
+        // Verify that an IOException is thrown when trying to copy from a non-existent source file
+        assertThrows(IOException.class, () -> filesService.copyFile(nonExistentFile, destinationFile));
+    }
+
+    @Test
+    @DisplayName("test pour vérifier si la méthode WriteFile écrit bien dans le fichier")
     public void testWriteFile() throws IOException {
         // Write additional content to the source file
         filesService.writeFile(sourceFile, " Additional content");
@@ -130,25 +145,7 @@ public class FilesServiceTest {
     }
 
     @Test
-    @DisplayName("Test deleteFile method with non-existent file")
-    public void testDeleteFileNonExistent() {
-        Path nonExistentFile = tempDirectory.resolve("nonExistent.txt");
-
-        // Verify that an IOException is thrown when trying to delete a non-existent file
-        assertThrows(IOException.class, () -> filesService.deleteFile(nonExistentFile));
-    }
-
-    @Test
-    @DisplayName("Test copyFile method with non-existent source file")
-    public void testCopyFileNonExistentSource() {
-        Path nonExistentFile = tempDirectory.resolve("nonExistent.txt");
-
-        // Verify that an IOException is thrown when trying to copy from a non-existent source file
-        assertThrows(IOException.class, () -> filesService.copyFile(nonExistentFile, destinationFile));
-    }
-
-    @Test
-    @DisplayName("Test writeFile method with non-existent file")
+    @DisplayName("test pour vérifier si la méthode WriteFile renvoei bien une erreur si le fichier n'existe pas de base")
     public void testWriteFileNonExistent() {
         Path nonExistentFile = tempDirectory.resolve("nonExistent.txt");
 

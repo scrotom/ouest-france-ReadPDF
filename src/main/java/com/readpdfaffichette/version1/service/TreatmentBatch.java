@@ -1,6 +1,8 @@
 package com.readpdfaffichette.version1.service;
 
 import com.readpdfaffichette.version1.exceptions.CustomAppException;
+import org.springframework.context.event.ContextRefreshedEvent;
+import org.springframework.context.event.EventListener;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
@@ -17,7 +19,7 @@ public class TreatmentBatch {
         this.treatmentService = treatmentService;
     }
 
-    @Scheduled(fixedRate = 60000)
+    @EventListener(ContextRefreshedEvent.class)
     public void readPdf() throws IOException, CustomAppException {
         log.info("Reading pdf");
         treatmentService.readpdf(null);
