@@ -15,6 +15,7 @@ import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 import java.nio.file.StandardOpenOption;
 
+import lombok.Getter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -23,6 +24,7 @@ import com.readpdfaffichette.version1.exceptions.CustomAppException;
 import javax.annotation.processing.Generated;
 
 @Component
+@Getter
 public class FilesService {
 
     //récupératon du chemin vers le dossier ou sont placé les pdf
@@ -42,27 +44,6 @@ public class FilesService {
     //récupération du dossier d'enregistrement des document mergé
     @Value("${mergedFile.outputPath}")
     private Path mergedFile;
-
-    //getter
-    public String getLink() {
-        return link;
-    }
-
-    public Path getTextFile1() {
-        return textFile1;
-    }
-
-    public Path getTextFile3() {
-        return textFile3;
-    }
-
-    public Path getMergedFile() {
-        return mergedFile;
-    }
-
-    public Path getTextFile1Saveplace() {
-        return textFile1Saveplace;
-    }
 
     //méthodes
 
