@@ -11,6 +11,7 @@ import static org.mockito.Mockito.*;
 
 import com.readpdfaffichette.version1.exceptions.CustomAppException;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -36,6 +37,7 @@ public class TreatmentServiceTest {
     }
 
     @Test
+    @DisplayName("test pour vérifier que la méthode ReadPdf s'execute bien dans un cas normal")
     public void testReadpdfSuccess() throws IOException, CustomAppException {
         String[] args = {};
         File folder = new File("src/test/resources/");
@@ -68,6 +70,7 @@ public class TreatmentServiceTest {
     }
 
     @Test
+    @DisplayName("test pour vérifier que la méthode ReadPdf n'execute pas les étapes suivantes en cas de non présence d'un dossier")
     public void testReadpdfFolderNotDirectory() throws IOException, CustomAppException {
         String[] args = {};
         File nonFolder = new File("src/test/resources/nonFolder.txt");
@@ -84,6 +87,7 @@ public class TreatmentServiceTest {
     }
 
     @Test
+    @DisplayName("test pour vérifier que la méthode ReadPdf gère bien les erreurs de traitements des pdf")
     public void testReadpdfExceptionDuringProcessing() throws IOException, CustomAppException {
         String[] args = {};
         File folder = new File("src/test/resources/");

@@ -84,7 +84,7 @@ public class PdfServiceTest {
     }
 
     @Test
-    @DisplayName("test pour vérifier si la méthode SortTextSuccess trie bien le texte selon les critères demandés")
+    @DisplayName("test pour vérifier si la méthode SortText trie bien le texte selon les critères donnés")
     public void testSortTextSuccess() throws CustomAppException {
         String inputText = "Sample text for sorting.";
 
@@ -100,6 +100,7 @@ public class PdfServiceTest {
     }
 
     @Test
+    @DisplayName("test pour vérifier si la méthode SortText renvoie bien une erreur si le regex renvoie une erreur")
     public void testSortTextFailure() throws CustomAppException {
         String inputText = "Sample text for sorting.";
 
@@ -110,6 +111,7 @@ public class PdfServiceTest {
     }
 
     @Test
+    @DisplayName("test pour vérifier si la méthode ProcessPdfs applique correctement les méthodes d'extraction et de tri et s'éxecute correctement")
     public void testProcessPdfsSuccess() throws IOException, CustomAppException {
         String pdfContent1 = "The Voice. Un casting lors d’un spectacle à Auray Belle-Île. L’épicier solidaire détourne 348 000 € 56 - Auray mercredi 29 mai 2024";
         String pdfContent2 = "Groix. Un jardin des insectes pour la biodiversité 56 - Groix jeudi 30 mai 2024";
@@ -152,7 +154,8 @@ public class PdfServiceTest {
     }
 
     @Test
-    public void testProcessPdfsWithNonPdfFile() throws IOException, CustomAppException {
+    @DisplayName("test pour vérifier si la méthode ProcessPdfs renvoie bien une erreur si le chemin de base ne contient pas de pdf ")
+    public void testProcessPdfsWithNonPdfFile() throws CustomAppException {
         Path nonPdfPath = Path.of("src/test/resources/test.txt");
 
         try (Stream<Path> paths = Stream.of(nonPdfPath)) {
@@ -162,6 +165,7 @@ public class PdfServiceTest {
     }
 
     @Test
+    @DisplayName("test pour vérifier si la méthode ProcessPdfs renvoie bien une erreur IOException si il y a une erreur sur l'extraction du texte")
     public void testProcessPdfsWithException() throws IOException, CustomAppException {
         String pdfContent = "ceci est un test d'extraction de texte sur ce pdf.";
         Path tempPdfPath = createTempPdfFile(pdfContent);

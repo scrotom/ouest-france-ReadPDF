@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.MockitoAnnotations;
@@ -35,6 +36,7 @@ public class RegexServiceTest {
     }
 
     @Test
+    @DisplayName("test pour vérifier si la méthode ExtractTitles extrait bien les titres présent dans un texte si il y a 2 titres")
     public void testExtractTitlesSuccessWith2title() throws CustomAppException {
         String text = " Title1. \r\n Subtitle1 \r\n Title2. \r\n Subtitle2 54 -";
         String[] expectedTitles = { "Title1.", "Subtitle1", "Title2.", "Subtitle2" };
@@ -44,6 +46,7 @@ public class RegexServiceTest {
     }
 
     @Test
+    @DisplayName("test pour vérifier si la méthode ExtractTitles extrait bien le titre présent dans un texte si il y a 1 titre ")
     public void testExtractTitlesSuccessWith1title() throws CustomAppException {
         String text = " Title1. \r\n Subtitle1 54 -";
         String[] expectedTitles = { "Title1.", "Subtitle1"};
@@ -53,6 +56,7 @@ public class RegexServiceTest {
     }
 
     @Test
+    @DisplayName("test pour vérifier si la méthode ExtractTitles renvoie bien une erreur si il n'y a pas de titre")
     public void testExtractTitlesFailure() {
         String text = "";
 
@@ -60,6 +64,7 @@ public class RegexServiceTest {
     }
 
     @Test
+    @DisplayName("test pour vérifier si la méthode ExtractCityAndPostalCode renvoie bien la ville et le code postal présent dans un texte")
     public void testExtractCityAndPostalCodeSuccess() throws CustomAppException {
         String text = "56 - CityName";
         String expectedCityAndPostalCode = "56 - CityName";
@@ -69,6 +74,7 @@ public class RegexServiceTest {
     }
 
     @Test
+    @DisplayName("test pour vérifier si la méthode ExtractCityAndPostalCode renvoie bien une erreur si il n'y a pas de ville et de code postal")
     public void testExtractCityAndPostalCodeFailure() {
         String text = "";
 
@@ -76,6 +82,7 @@ public class RegexServiceTest {
     }
 
     @Test
+    @DisplayName("test pour vérifier si la méthode ExtractDate renvoie bien la date présente dans un texte")
     public void testExtractDateSuccess() throws CustomAppException {
         String text = "vendredi 21 mai 2024";
         String expectedDate = "vendredi 21 mai 2024";
@@ -85,6 +92,7 @@ public class RegexServiceTest {
     }
 
     @Test
+    @DisplayName("test pour vérifier si la méthode ExtractDate renvoie bien une erreur si il n'y a pas de date ")
     public void testExtractDateFailure() {
         String text = "";
 

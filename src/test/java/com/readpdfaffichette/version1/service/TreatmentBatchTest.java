@@ -7,11 +7,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.io.IOException;
-import java.util.logging.Logger;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
@@ -31,30 +29,30 @@ public class TreatmentBatchTest {
     }
 
     @Test
+    @DisplayName("test pour vérifier si la méthode ReadPdf appelle bien une seule fois la méthode readpdf de treatmentService")
     public void testReadPdfSuccess() throws IOException, CustomAppException {
-        // Act
+
         treatmentBatch.readPdf();
 
-        // Assert
         verify(treatmentService, times(1)).readpdf(null);
     }
 
     @Test
+    @DisplayName("test pour vérifier si la méthode ReadPdf renvoie bien une erreur IOException en cas d'échec")
     public void testReadPdfThrowsIOException() throws IOException, CustomAppException {
-        // Arrange
+
         doThrow(IOException.class).when(treatmentService).readpdf(null);
 
-        // Act & Assert
         assertThrows(IOException.class, () -> treatmentBatch.readPdf());
         verify(treatmentService, times(1)).readpdf(null);
     }
 
     @Test
+    @DisplayName("test pour vérifier si la méthode ReadPdf renvoie bien une erreur en cas d'échec")
     public void testReadPdfThrowsCustomAppException() throws IOException, CustomAppException {
-        // Arrange
+
         doThrow(CustomAppException.class).when(treatmentService).readpdf(null);
 
-        // Act & Assert
         assertThrows(CustomAppException.class, () -> treatmentBatch.readPdf());
         verify(treatmentService, times(1)).readpdf(null);
     }
