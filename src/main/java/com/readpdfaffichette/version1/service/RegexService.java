@@ -12,12 +12,16 @@
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import com.readpdfaffichette.version1.exceptions.CustomAppException;
 
 @Component
+@Getter
+@Setter
 public class RegexService {
 
     //récupération des regex
@@ -29,32 +33,6 @@ public class RegexService {
 
     @Value("${regex.date}")
     private String regexDate;
-
-    //getters et setters
-
-    public String getRegexTitles() {
-        return regexTitles;
-    }
-
-    public void setRegexTitles(String regexTitles) {
-        this.regexTitles = regexTitles;
-    }
-
-    public String getRegexCity() {
-        return regexCity;
-    }
-
-    public void setRegexCity(String regexCity) {
-        this.regexCity = regexCity;
-    }
-
-    public String getRegexDate() {
-        return regexDate;
-    }
-
-    public void setRegexDate(String regexDate) {
-        this.regexDate = regexDate;
-    }
 
     //méthodes 
     
