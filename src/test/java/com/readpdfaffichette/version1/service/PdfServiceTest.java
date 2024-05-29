@@ -2,11 +2,15 @@ package com.readpdfaffichette.version1.service;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -68,4 +72,36 @@ public class PdfServiceTest {
 
         assertThrows(CustomAppException.class, () -> pdfService.sortText(inputText, regexService));
     }
+    /*@Test
+    @DisplayName("Test processPdfs method")
+    public void testProcessPdfs() throws IOException, CustomAppException {
+        Path tempDir = Files.createTempDirectory("testPdfs");
+        Path pdfFile1 = tempDir.resolve("file1.pdf");
+        Path pdfFile2 = tempDir.resolve("file2.pdf");
+
+        Files.write(pdfFile1, "PDF content 1".getBytes());
+        Files.write(pdfFile2, "PDF content 2".getBytes());
+
+        try (Stream<Path> paths = Files.walk(tempDir)) {
+            // Mock the extractTextFromPDF and sortText methods
+            when(pdfService.extractTextFromPDF(pdfFile1.toFile(), regexService)).thenReturn("Extracted text 1");
+            when(pdfService.extractTextFromPDF(pdfFile2.toFile(), regexService)).thenReturn("Extracted text 2");
+            when(pdfService.sortText("Extracted text 1", regexService)).thenReturn("Sorted text 1");
+            when(pdfService.sortText("Extracted text 2", regexService)).thenReturn("Sorted text 2");
+
+            StringBuilder result = pdfService.processPdfs(paths, regexService);
+
+            String expected = "Sorted text 1\n\nSorted text 2\n\n";
+            assertEquals(expected, result.toString());
+        }
+
+        // Clean des fichiers de tests
+        Files.walk(tempDir).sorted((a, b) -> b.compareTo(a)).forEach(p -> {
+            try {
+                Files.delete(p);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+    }*/
 }

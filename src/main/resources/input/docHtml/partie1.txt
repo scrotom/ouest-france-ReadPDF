@@ -3,6 +3,21 @@
         <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <META>
         <link rel="stylesheet" type="text/css" href="styles.css">
+        <style>
+        body {
+            font-family: "Ouest France Regular";
+        }
+
+        tr:nth-child(even) {
+            background-color: #FFCC99;
+            font-size: 14px;
+        }
+
+        tr:nth-child(odd) {
+            background-color: #FFFFFF;
+            font-size: 14px;
+        }
+        </style>
     </HEAD>
     <BODY>
 <TABLE width="100%">

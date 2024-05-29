@@ -45,9 +45,6 @@ public class TreatmentService {
             return;
         }
 
-        // Copie du fichier CSS
-        filesService.copyFile(filesService.getStyleCssSource(), filesService.getStyleCssSaveplace());
-
         // Copie de la partie1 du doc HTML, afin de pouvoir le modifier ensuite
         filesService.copyFile(filesService.getTextFile1(), filesService.getTextFile1Saveplace());
 
