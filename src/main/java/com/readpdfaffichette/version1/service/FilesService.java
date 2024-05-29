@@ -28,13 +28,6 @@ public class FilesService {
     //récupératon du chemin vers le dossier ou sont placé les pdf
     @Value("${inputRepository.path}")
     private String link;
-    
-    //chemin pour le fichier css
-    @Value("${styleCss.outputPath}")
-    private Path styleCssSaveplace;
-
-    @Value("${styleCss.inputPath}")
-    private Path styleCssSource;
 
     //récupération des fichiers pour le doc html final
     @Value("${partie1.inputPath}")
@@ -53,14 +46,6 @@ public class FilesService {
     //getter
     public String getLink() {
         return link;
-    }
-
-    public Path getStyleCssSaveplace() {
-        return styleCssSaveplace;
-    }
-
-    public Path getStyleCssSource() {
-        return styleCssSource;
     }
 
     public Path getTextFile1() {
