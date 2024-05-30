@@ -17,6 +17,7 @@ import java.nio.file.Paths;
 import java.util.stream.Stream;
 
 import com.readpdfaffichette.version1.exceptions.CustomAppException;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 
@@ -26,11 +27,28 @@ public class TreatmentService {
     private final PdfService pdfService;
     private final FilesService filesService;
     private final RegexService regexService;
+    private final FtpService ftpService;
 
-    public TreatmentService(PdfService pdfService, FilesService filesService, RegexService regexService) {
+    @Value("${ftp.server}")
+    private String ftpServer;
+
+    @Value("${ftp.port}")
+    private int ftpPort;
+
+    @Value("${ftp.user}")
+    private String ftpUser;
+
+    @Value("${ftp.password}")
+    private String ftpPassword;
+
+    @Value("${ftp.upload.path}")
+    private String ftpUploadPath;
+
+    public TreatmentService(PdfService pdfService, FilesService filesService, RegexService regexService, FtpService ftpService) {
         this.pdfService = pdfService;
         this.filesService = filesService;
         this.regexService = regexService;
+        this.ftpService = ftpService;
     }
 
     public void readpdf(String[] args) throws IOException, CustomAppException {
@@ -56,9 +74,15 @@ public class TreatmentService {
         // Merger les deux fichiers txt qui serviront à la page HTML
         filesService.mergeTextFiles(filesService.getTextFile1Saveplace(), filesService.getTextFile3(), filesService.getMergedFile());
 
-        // Supprimer la partie1 du dossier final
+        // Supprimer la partie1 du dossier
         filesService.deleteFile(filesService.getTextFile1Saveplace());
 
+        // Envoyer le fichier sur le serveur FTP
+        uploadFileToFTP(filesService.getMergedFile().toString());
+    }
+
+    private void uploadFileToFTP(String filePath) throws IOException {
+        ftpService.uploadFileToFTP(ftpServer, ftpPort, ftpUser, ftpPassword, filePath, ftpUploadPath);
     }
 }
 

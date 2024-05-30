@@ -3,6 +3,7 @@ package com.readpdfaffichette.version1.service;
 import org.apache.commons.net.ftp.FTP;
 import org.apache.commons.net.ftp.FTPClient;
 import org.apache.commons.net.ftp.FTPReply;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.FileInputStream;
@@ -12,8 +13,13 @@ import java.io.InputStream;
 @Service
 public class FtpService {
 
+    private final FTPClient ftpClient;
+
+    public FtpService(FTPClient ftpClient) {
+        this.ftpClient = ftpClient;
+    }
+
     public void uploadFileToFTP(String server, int port, String user, String pass, String filePath, String uploadPath) throws IOException {
-        FTPClient ftpClient = new FTPClient();
         try {
             ftpClient.connect(server, port);
             int replyCode = ftpClient.getReplyCode();
@@ -35,14 +41,13 @@ public class FtpService {
                     throw new IOException("Could not upload the file to the FTP server.");
                 }
             }
-
             ftpClient.logout();
         } catch (IOException ex) {
             throw new IOException("Error uploading file to FTP server: " + ex.getMessage(), ex);
         } finally {
             if (ftpClient.isConnected()) {
                 try {
-                    ftpClient.disconnect();
+                    ftpClient.logout();
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }

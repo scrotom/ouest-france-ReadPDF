@@ -46,6 +46,7 @@
             </exclusions>
         </dependency>
 
+        <!-- Apache commons-net -->
         <dependency>
             <groupId>commons-net</groupId>
             <artifactId>commons-net</artifactId>
