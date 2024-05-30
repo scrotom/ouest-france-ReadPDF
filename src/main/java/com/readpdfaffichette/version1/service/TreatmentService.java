@@ -4,10 +4,10 @@
  * Description : Classe permettant de réaliser le traitement des fichiers pdf afin d'extraire leurs données et de les concaténer dans un doc html.
  *
  * Date        : 23/05/2024
- * 
+ *
  */
 
- package com.readpdfaffichette.version1.service;
+package com.readpdfaffichette.version1.service;
 
 import java.io.File;
 import java.io.IOException;
@@ -85,4 +85,5 @@ public class TreatmentService {
         ftpService.uploadFileToFTP(ftpServer, ftpPort, ftpUser, ftpPassword, filePath, ftpUploadPath);
     }
 }
+
 

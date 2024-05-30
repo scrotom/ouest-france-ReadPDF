@@ -15,8 +15,7 @@
  import org.springframework.boot.autoconfigure.SpringBootApplication;
 
  import com.readpdfaffichette.version1.exceptions.CustomAppException;
- import org.springframework.context.ConfigurableApplicationContext;
- import org.springframework.scheduling.annotation.EnableScheduling;
+
 
 @SpringBootApplication
  public class ReadPDF {
