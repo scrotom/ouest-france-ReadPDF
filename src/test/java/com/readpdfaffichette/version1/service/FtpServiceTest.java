@@ -35,7 +35,7 @@ public class FtpServiceTest {
     }
 
     @Test
-    @DisplayName("Test successful file upload to FTP server")
+    @DisplayName("Test de la méthode UploadFileToFTP en cas de succès de l'envoie du fichier")
     public void testUploadFileToFTPSuccess() throws IOException {
         String server = "ftp.example.com";
         int port = 21;
@@ -69,7 +69,7 @@ public class FtpServiceTest {
     }
 
     @Test
-    @DisplayName("Test failed connection to FTP server")
+    @DisplayName("Test de la méthode UploadFileToFTP en cas d'echec de la connexion")
     public void testUploadFileToFTPConnectionFailure() throws IOException {
         String server = "ftp.example.com";
         int port = 21;
@@ -99,7 +99,7 @@ public class FtpServiceTest {
     }
 
     @Test
-    @DisplayName("Test failed login to FTP server")
+    @DisplayName("Test de la méthode UploadFileToFTP en cas de mauvais mot de passe/login")
     public void testUploadFileToFTPLoginFailure() throws IOException {
         String server = "ftp.example.com";
         int port = 21;
@@ -132,7 +132,7 @@ public class FtpServiceTest {
     }
 
     @Test
-    @DisplayName("Test failed file upload to FTP server")
+    @DisplayName("Test de la méthode UploadFileToFTP en cas d'echec de l'envoi du fichier sur le serveur FTP")
     public void testUploadFileToFTPFailure() throws IOException {
         String server = "ftp.example.com";
         int port = 21;

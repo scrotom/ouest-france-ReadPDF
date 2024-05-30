@@ -21,8 +21,8 @@ public class TreatmentBatch {
 
     @EventListener(ContextRefreshedEvent.class)
     public void readPdf() throws IOException, CustomAppException {
-        log.info("Reading pdf");
+        log.info("lecture du pdf");
         treatmentService.readpdf(null);
-        log.info("Done reading pdf");
+        log.info("lecture du pdf finie");
     }
 }

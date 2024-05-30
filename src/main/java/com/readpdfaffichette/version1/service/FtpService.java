@@ -23,43 +23,43 @@ public class FtpService {
 
     public void uploadFileToFTP(String server, int port, String user, String pass, String filePath, String uploadPath) throws IOException {
         try {
-            logger.info("Connecting to FTP server...");
+            logger.info("Connexion au serveur FTP...");
             ftpClient.connect(server, port);
             int replyCode = ftpClient.getReplyCode();
             if (!FTPReply.isPositiveCompletion(replyCode)) {
-                throw new IOException("Could not connect to FTP server. Reply Code: " + replyCode);
+                throw new IOException("impossible de se connecter au serveur FTP " + replyCode);
             }
-            logger.info("Connected to FTP server.");
+            logger.info("connecté au serveur FTP");
 
             boolean success = ftpClient.login(user, pass);
             if (!success) {
-                throw new IOException("Could not login to FTP server.");
+                throw new IOException("nom d'utilisateur ou mot de passe incorrect pour le serveur FTP");
             }
-            logger.info("Logged in to FTP server.");
+            logger.info("mot de passe et nom d'utilisateur correct : connecté au serveur FTP");
 
             ftpClient.enterLocalPassiveMode();
             ftpClient.setFileType(FTP.BINARY_FILE_TYPE);
 
             try (InputStream inputStream = new FileInputStream(filePath)) {
-                logger.info("Uploading file...");
+                logger.info("envoi du fichier...");
                 boolean done = ftpClient.storeFile(uploadPath, inputStream);
                 if (!done) {
-                    throw new IOException("Could not upload the file to the FTP server.");
+                    throw new IOException("impossible d'envoyer le fichier vers le serveur FTP");
                 }
-                logger.info("File uploaded successfully.");
+                logger.info("envoie du fichier reussi");
             }
             ftpClient.logout();
-            logger.info("Logged out from FTP server.");
+            logger.info("déconnexion du serveur FTP");
         } catch (IOException ex) {
-            logger.log(Level.SEVERE, "Error uploading file to FTP server: " + ex.getMessage(), ex);
-            throw new IOException("Error uploading file to FTP server: " + ex.getMessage(), ex);
+            logger.log(Level.SEVERE, "erreur lors de l'envoi du fichier " + ex.getMessage(), ex);
+            throw new IOException("erreur lors de l'envoi du fichier " + ex.getMessage(), ex);
         } finally {
             if (ftpClient.isConnected()) {
                 try {
                     ftpClient.disconnect();
-                    logger.info("Disconnected from FTP server.");
+                    logger.info("déconnecté du serveur");
                 } catch (IOException ex) {
-                    logger.log(Level.SEVERE, "Error disconnecting from FTP server: " + ex.getMessage(), ex);
+                    logger.log(Level.SEVERE, "erreur lors de la déconnexion du serveur " + ex.getMessage(), ex);
                 }
             }
         }
