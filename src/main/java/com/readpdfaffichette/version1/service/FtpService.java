@@ -1,4 +1,13 @@
-package com.readpdfaffichette.version1.service;
+/*
+ * Nom         : FtpService.java
+ *
+ * Description : Classe permettant d'envoyer des fichiers sur un serveur distant avec un protocole ftp.
+ *
+ * Date        : 31/05/2024
+ *
+ */
+
+/*package com.readpdfaffichette.version1.service;
 
 import org.apache.commons.net.ftp.FTP;
 import org.apache.commons.net.ftp.FTPClient;
@@ -64,4 +73,4 @@ public class FtpService {
             }
         }
     }
-}
+}*/

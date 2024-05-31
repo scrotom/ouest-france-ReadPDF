@@ -32,19 +32,19 @@ public class TreatmentServiceTest {
     @Mock
     private RegexService regexService;
 
-    @Mock
-    private FtpService ftpService;
+    //@Mock
+    //private FtpService ftpService;
 
     @BeforeEach
     public void setUp() throws IOException {
         MockitoAnnotations.openMocks(this);
 
-        // Injecting the FTP properties
-        ReflectionTestUtils.setField(treatmentService, "ftpServer", "ftp.example.com");
-        ReflectionTestUtils.setField(treatmentService, "ftpPort", 21);
-        ReflectionTestUtils.setField(treatmentService, "ftpUser", "ftpuser");
-        ReflectionTestUtils.setField(treatmentService, "ftpPassword", "ftppassword");
-        ReflectionTestUtils.setField(treatmentService, "ftpUploadPath", "/remote/path/affichettes.html");
+        // injection des propriétés de test du FTP
+        //ReflectionTestUtils.setField(treatmentService, "ftpServer", "ftp.example.com");
+        //ReflectionTestUtils.setField(treatmentService, "ftpPort", 21);
+        //ReflectionTestUtils.setField(treatmentService, "ftpUser", "ftpuser");
+        //ReflectionTestUtils.setField(treatmentService, "ftpPassword", "ftppassword");
+        //ReflectionTestUtils.setField(treatmentService, "ftpUploadPath", "/remote/path/affichettes.html");
     }
 
     @Test
@@ -67,7 +67,7 @@ public class TreatmentServiceTest {
         doNothing().when(filesService).writeFile(any(Path.class), anyString());
         doNothing().when(filesService).mergeTextFiles(textFile1Saveplace, textFile3, mergedFile);
         doNothing().when(filesService).deleteFile(textFile1Saveplace);
-        doNothing().when(ftpService).uploadFileToFTP(anyString(), anyInt(), anyString(), anyString(), anyString(), anyString());
+        //doNothing().when(ftpService).uploadFileToFTP(anyString(), anyInt(), anyString(), anyString(), anyString(), anyString());
 
         StringBuilder processedText = new StringBuilder("Processed text");
         when(pdfService.processPdfs(any(Stream.class), eq(regexService))).thenReturn(processedText);
@@ -79,7 +79,7 @@ public class TreatmentServiceTest {
         verify(filesService, times(1)).writeFile(textFile1Saveplace, processedText.toString());
         verify(filesService, times(1)).mergeTextFiles(textFile1Saveplace, textFile3, mergedFile);
         verify(filesService, times(1)).deleteFile(textFile1Saveplace);
-        verify(ftpService, times(1)).uploadFileToFTP(anyString(), anyInt(), anyString(), anyString(), anyString(), anyString());
+        //verify(ftpService, times(1)).uploadFileToFTP(anyString(), anyInt(), anyString(), anyString(), anyString(), anyString());
     }
 
     @Test

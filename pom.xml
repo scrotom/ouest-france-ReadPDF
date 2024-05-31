@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.readpdfaffichette</groupId>
-    <artifactId>version1</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>version1</name>
-    <description>Projet ReadPDF, pour extraire les informations des affichettes en pdf, dans le but de les concentrer dans un fichier .html</description>
+    <artifactId>ReadPDF</artifactId>
+    <version>1.0.0</version>
+    <name>ReadPDF</name>
+    <description>Projet ReadPDF, pour extraire les informations des affichettes en pdf, dans le but de les concaténer dans un fichier .html</description>
     <properties>
         <java.version>17</java.version>
     </properties>
