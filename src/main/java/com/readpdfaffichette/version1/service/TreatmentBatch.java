@@ -1,9 +1,17 @@
+/*
+ * Nom         : TreatementBatch.java
+ *
+ * Description : Classe permettant de démarrer le traitement au lancement de l'application
+ *
+ * Date        : 23/05/2024
+ *
+ */
+
 package com.readpdfaffichette.version1.service;
 
 import com.readpdfaffichette.version1.exceptions.CustomAppException;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -21,8 +29,8 @@ public class TreatmentBatch {
 
     @EventListener(ContextRefreshedEvent.class)
     public void readPdf() throws IOException, CustomAppException {
-        log.info("lecture du pdf");
+        log.info("lecture des pdf");
         treatmentService.readpdf(null);
-        log.info("lecture du pdf finie");
+        log.info("traitement fini");
     }
 }

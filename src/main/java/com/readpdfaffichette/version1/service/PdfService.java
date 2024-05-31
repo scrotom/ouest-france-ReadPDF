@@ -1,5 +1,5 @@
 /*
- * Nom         : PdfUtil.java
+ * Nom         : PdfService.java
  *
  * Description : Classe permettant de gérer les méthodes liés au scan des pdf, et a la mise en page du doc html final
  *

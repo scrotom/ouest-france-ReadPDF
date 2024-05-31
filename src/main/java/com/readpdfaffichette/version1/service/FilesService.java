@@ -1,5 +1,5 @@
 /*
- * Nom         : FilesUtil.java
+ * Nom         : FilesService.java
  *
  * Description : Classe permettant la gestion des fichiers lié à l'application
  *

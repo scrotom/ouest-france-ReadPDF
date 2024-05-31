@@ -1,5 +1,5 @@
 /*
- * Nom         : Treatement.java
+ * Nom         : TreatementService.java
  *
  * Description : Classe permettant de réaliser le traitement des fichiers pdf afin d'extraire leurs données et de les concaténer dans un doc html.
  *
@@ -17,7 +17,6 @@ import java.nio.file.Paths;
 import java.util.stream.Stream;
 
 import com.readpdfaffichette.version1.exceptions.CustomAppException;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 

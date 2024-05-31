@@ -1,5 +1,5 @@
 /*
- * Nom         : RegexUtil.java
+ * Nom         : RegexService.java
  *
  * Description : Classe permettant de gérer les regex lié au tri du texte extrait du pdf.
  *
