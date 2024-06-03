@@ -1,41 +1,23 @@
-2024-06-03 14:25:04 INFO  RegexService:105 - extraction de la date
-2024-06-03 14:25:04 INFO  RegexService:105 - extraction de la date
-2024-06-03 14:29:16 INFO  FilesService:61 - Suppression du fichier : C:\Users\TOM~1.LEF\AppData\Local\Temp\testDir11242890651444661294\nonExistent.txt
-2024-06-03 14:29:17 INFO  FilesService:61 - Suppression du fichier : C:\Users\TOM~1.LEF\AppData\Local\Temp\testDir16052992098592797297\source.txt
-2024-06-03 14:29:19 INFO  RegexService:105 - extraction de la date
-2024-06-03 14:29:19 INFO  RegexService:105 - extraction de la date
-2024-06-03 14:31:53 INFO  FilesService:79 - Fusion des fichiers test.txt et C:\Users\TOM~1.LEF\AppData\Local\Temp\file29329898283116092522.txt dans C:\Users\TOM~1.LEF\AppData\Local\Temp\combined16222890783456982327.txt
-2024-06-03 14:31:53 ERROR FilesService:92 - Erreur lors de l'assemblage des fichiers : test.txt
-2024-06-03 14:31:53 INFO  FilesService:61 - Suppression du fichier : C:\Users\TOM~1.LEF\AppData\Local\Temp\testDir13292531931862996525\nonExistent.txt
-2024-06-03 14:31:53 INFO  FilesService:73 - Écriture dans le fichier : C:\Users\TOM~1.LEF\AppData\Local\Temp\testDir17238744233132873628\source.txt
-2024-06-03 14:31:53 INFO  FilesService:79 - Fusion des fichiers C:\Users\TOM~1.LEF\AppData\Local\Temp\file12270827042404420459.txt et C:\Users\TOM~1.LEF\AppData\Local\Temp\file23057928287217804949.txt dans C:\Users\TOM~1.LEF\AppData\Local\Temp\combined16787251591926098667.txt
-2024-06-03 14:31:53 INFO  FilesService:90 - Fusion réussie des fichiers dans : C:\Users\TOM~1.LEF\AppData\Local\Temp\combined16787251591926098667.txt
-2024-06-03 14:31:53 INFO  FilesService:67 - Copie du fichier de C:\Users\TOM~1.LEF\AppData\Local\Temp\testDir10378176511487619737\source.txt vers C:\Users\TOM~1.LEF\AppData\Local\Temp\testDir10378176511487619737\destination.txt
-2024-06-03 14:31:53 INFO  FilesService:67 - Copie du fichier de C:\Users\TOM~1.LEF\AppData\Local\Temp\testDir5901016243632065552\nonExistent.txt vers C:\Users\TOM~1.LEF\AppData\Local\Temp\testDir5901016243632065552\destination.txt
-2024-06-03 14:31:53 INFO  FilesService:61 - Suppression du fichier : C:\Users\TOM~1.LEF\AppData\Local\Temp\testDir2327294171838107094\source.txt
-2024-06-03 14:31:53 INFO  FilesService:73 - Écriture dans le fichier : C:\Users\TOM~1.LEF\AppData\Local\Temp\testDir4844252197203205723\nonExistent.txt
-2024-06-03 14:31:55 INFO  RegexService:105 - extraction de la date
-2024-06-03 14:31:55 INFO  RegexService:105 - extraction de la date
-2024-06-03 14:43:58 INFO  FilesService:79 - Fusion des fichiers test.txt et C:\Users\TOM~1.LEF\AppData\Local\Temp\file215308870211741883692.txt dans C:\Users\TOM~1.LEF\AppData\Local\Temp\combined2722603966590361426.txt
-2024-06-03 14:43:58 ERROR FilesService:92 - Erreur lors de l'assemblage des fichiers : test.txt
-2024-06-03 14:43:58 INFO  FilesService:61 - Suppression du fichier : C:\Users\TOM~1.LEF\AppData\Local\Temp\testDir3118812142592793482\nonExistent.txt
-2024-06-03 14:43:58 INFO  FilesService:73 - Écriture dans le fichier : C:\Users\TOM~1.LEF\AppData\Local\Temp\testDir10496764471547918848\source.txt
-2024-06-03 14:43:59 INFO  FilesService:79 - Fusion des fichiers C:\Users\TOM~1.LEF\AppData\Local\Temp\file19371487316631787395.txt et C:\Users\TOM~1.LEF\AppData\Local\Temp\file213833130344647783484.txt dans C:\Users\TOM~1.LEF\AppData\Local\Temp\combined11872029801268544502.txt
-2024-06-03 14:43:59 INFO  FilesService:90 - Fusion réussie des fichiers dans : C:\Users\TOM~1.LEF\AppData\Local\Temp\combined11872029801268544502.txt
-2024-06-03 14:43:59 INFO  FilesService:67 - Copie du fichier de C:\Users\TOM~1.LEF\AppData\Local\Temp\testDir3201424382162863301\source.txt vers C:\Users\TOM~1.LEF\AppData\Local\Temp\testDir3201424382162863301\destination.txt
-2024-06-03 14:43:59 INFO  FilesService:67 - Copie du fichier de C:\Users\TOM~1.LEF\AppData\Local\Temp\testDir8196690221245385270\nonExistent.txt vers C:\Users\TOM~1.LEF\AppData\Local\Temp\testDir8196690221245385270\destination.txt
-2024-06-03 14:43:59 INFO  FilesService:61 - Suppression du fichier : C:\Users\TOM~1.LEF\AppData\Local\Temp\testDir9414709879089934101\source.txt
-2024-06-03 14:43:59 INFO  FilesService:73 - Écriture dans le fichier : C:\Users\TOM~1.LEF\AppData\Local\Temp\testDir17976547310876219500\nonExistent.txt
-2024-06-03 14:44:01 INFO  PdfService:37 - Extraction du texte depuis le fichier PDF : test17456848045128789899.pdf
-2024-06-03 14:44:01 INFO  PdfService:45 - Texte extrait avec succès du fichier PDF : test17456848045128789899.pdf
-2024-06-03 14:44:01 INFO  PdfService:56 - Tri du texte extrait
-2024-06-03 14:44:01 INFO  PdfService:69 - Texte trié avec succès
-2024-06-03 14:44:01 INFO  PdfService:37 - Extraction du texte depuis le fichier PDF : nonexistent.pdf
-2024-06-03 14:44:01 ERROR PdfService:49 - Erreur lors de l'extraction du texte depuis le fichier PDF : src\test\resources\nonexistent.pdf (Le fichier spécifié est introuvable)
-2024-06-03 14:44:01 INFO  PdfService:79 - Traitement des fichiers PDF dans le dossier
-2024-06-03 14:44:01 INFO  PdfService:95 - Traitement des fichiers PDF terminé
-2024-06-03 14:44:01 INFO  PdfService:79 - Traitement des fichiers PDF dans le dossier
-2024-06-03 14:44:01 ERROR PdfService:90 - Erreur lors du traitement du fichier PDF : test6680555726855678521.pdf
+2024-06-03 15:04:09  [FilesService]  INFO   mergeTextFiles - Fusion des fichiers test.txt et C:\Users\TOM~1.LEF\AppData\Local\Temp\file26391465414409640399.txt dans C:\Users\TOM~1.LEF\AppData\Local\Temp\combined2087502688466546924.txt
+2024-06-03 15:04:09  [FilesService]  ERROR  mergeTextFiles - Erreur lors de l'assemblage des fichiers : test.txt
+2024-06-03 15:04:09  [FilesService]  INFO   deleteFile - Suppression du fichier : C:\Users\TOM~1.LEF\AppData\Local\Temp\testDir15251759898076514328\nonExistent.txt
+2024-06-03 15:04:09  [FilesService]  INFO   writeFile - Écriture dans le fichier : C:\Users\TOM~1.LEF\AppData\Local\Temp\testDir5634096683895033230\source.txt
+2024-06-03 15:04:09  [FilesService]  INFO   mergeTextFiles - Fusion des fichiers C:\Users\TOM~1.LEF\AppData\Local\Temp\file112891199803341107138.txt et C:\Users\TOM~1.LEF\AppData\Local\Temp\file25864863405761436528.txt dans C:\Users\TOM~1.LEF\AppData\Local\Temp\combined1125465387573782035.txt
+2024-06-03 15:04:09  [FilesService]  INFO   mergeTextFiles - Fusion réussie des fichiers dans : C:\Users\TOM~1.LEF\AppData\Local\Temp\combined1125465387573782035.txt
+2024-06-03 15:04:09  [FilesService]  INFO   copyFile - Copie du fichier de C:\Users\TOM~1.LEF\AppData\Local\Temp\testDir7929937599792432976\source.txt vers C:\Users\TOM~1.LEF\AppData\Local\Temp\testDir7929937599792432976\destination.txt
+2024-06-03 15:04:10  [FilesService]  INFO   copyFile - Copie du fichier de C:\Users\TOM~1.LEF\AppData\Local\Temp\testDir6126108743946977555\nonExistent.txt vers C:\Users\TOM~1.LEF\AppData\Local\Temp\testDir6126108743946977555\destination.txt
+2024-06-03 15:04:10  [FilesService]  INFO   deleteFile - Suppression du fichier : C:\Users\TOM~1.LEF\AppData\Local\Temp\testDir9886158121005296306\source.txt
+2024-06-03 15:04:10  [FilesService]  INFO   writeFile - Écriture dans le fichier : C:\Users\TOM~1.LEF\AppData\Local\Temp\testDir7362743448395422977\nonExistent.txt
+2024-06-03 15:04:11  [PdfService]  INFO   extractTextFromPDF - Extraction du texte depuis le fichier PDF : test17035717706467761113.pdf
+2024-06-03 15:04:11  [PdfService]  INFO   extractTextFromPDF - Texte extrait avec succès du fichier PDF : test17035717706467761113.pdf
+2024-06-03 15:04:11  [PdfService]  INFO   sortText - Tri du texte extrait
+2024-06-03 15:04:11  [PdfService]  INFO   sortText - Texte trié avec succès
+2024-06-03 15:04:11  [PdfService]  INFO   extractTextFromPDF - Extraction du texte depuis le fichier PDF : nonexistent.pdf
+2024-06-03 15:04:11  [PdfService]  ERROR  extractTextFromPDF - Erreur lors de l'extraction du texte depuis le fichier PDF : src\test\resources\nonexistent.pdf (Le fichier spécifié est introuvable)
+2024-06-03 15:04:11  [PdfService]  INFO   processPdfs - Traitement des fichiers PDF dans le dossier
+2024-06-03 15:04:11  [PdfService]  INFO   processPdfs - Traitement des fichiers PDF terminé
+2024-06-03 15:04:11  [PdfService]  INFO   processPdfs - Traitement des fichiers PDF dans le dossier
+2024-06-03 15:04:11  [PdfService]  ERROR  lambda$processPdfs$2 - Erreur lors du traitement du fichier PDF : test3479424609132472760.pdf
 com.readpdfaffichette.version1.exceptions.CustomAppException: Erreur lors de l'extraction du texte sur le pdf
 	at com.readpdfaffichette.version1.service.PdfService.lambda$processPdfs$2(PdfService.java:85) ~[classes/:?]
 	at java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:183) ~[?:?]
@@ -117,50 +99,63 @@ com.readpdfaffichette.version1.exceptions.CustomAppException: Erreur lors de l'e
 	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162) [surefire-booter-3.0.0-M5.jar:3.0.0-M5]
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562) [surefire-booter-3.0.0-M5.jar:3.0.0-M5]
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548) [surefire-booter-3.0.0-M5.jar:3.0.0-M5]
-2024-06-03 14:44:01 INFO  PdfService:95 - Traitement des fichiers PDF terminé
-2024-06-03 14:44:01 INFO  PdfService:56 - Tri du texte extrait
-2024-06-03 14:44:01 ERROR PdfService:72 - Erreur lors du tri du texte extrait : Error extracting titles
-2024-06-03 14:44:01 INFO  PdfService:79 - Traitement des fichiers PDF dans le dossier
-2024-06-03 14:44:01 INFO  PdfService:88 - Fichier PDF traité : test10241135748706384142.pdf
-2024-06-03 14:44:01 INFO  PdfService:88 - Fichier PDF traité : test8217976092090597519.pdf
-2024-06-03 14:44:01 INFO  PdfService:95 - Traitement des fichiers PDF terminé
-2024-06-03 14:44:01 INFO  RegexService:90 - Extraction de la ville et du code postal
-2024-06-03 14:44:01 INFO  RegexService:97 - Ville et code postal extraits avec succès
-2024-06-03 14:44:01 INFO  RegexService:111 - Extraction de la date
-2024-06-03 14:44:01 INFO  RegexService:118 - Date extraite avec succès
-2024-06-03 14:44:01 INFO  RegexService:90 - Extraction de la ville et du code postal
-2024-06-03 14:44:01 WARN  RegexService:100 - Aucune ville trouvée dans le texte
-2024-06-03 14:44:01 ERROR RegexService:104 - Erreur lors de l'extraction de la ville par le regex : Aucune ville trouvée dans le texte.
-2024-06-03 14:44:01 INFO  RegexService:111 - Extraction de la date
-2024-06-03 14:44:01 WARN  RegexService:121 - Aucune date trouvée dans le texte
-2024-06-03 14:44:01 ERROR RegexService:125 - Erreur lors de l'extraction de la date par le regex : Aucune date trouvée dans le texte.
-2024-06-03 14:44:01 INFO  RegexService:43 - Extraction des titres du texte
-2024-06-03 14:44:01 INFO  RegexService:76 - Titre unique extrait avec succès
-2024-06-03 14:44:01 INFO  RegexService:43 - Extraction des titres du texte
-2024-06-03 14:44:01 INFO  RegexService:69 - Titres extraits avec succès
-2024-06-03 14:44:01 INFO  RegexService:43 - Extraction des titres du texte
-2024-06-03 14:44:01 WARN  RegexService:79 - Aucun titre trouvé dans le texte
-2024-06-03 14:44:01 ERROR RegexService:83 - Erreur lors de l'extraction des titres par le regex : Aucun titre trouvé dans le texte.
-2024-06-03 14:49:15 INFO  FilesService:79 - Fusion des fichiers test.txt et C:\Users\TOM~1.LEF\AppData\Local\Temp\file214503317328903854582.txt dans C:\Users\TOM~1.LEF\AppData\Local\Temp\combined13879235664797706080.txt
-2024-06-03 14:49:15 ERROR FilesService:92 - Erreur lors de l'assemblage des fichiers : test.txt
-2024-06-03 14:49:15 INFO  FilesService:61 - Suppression du fichier : C:\Users\TOM~1.LEF\AppData\Local\Temp\testDir6648626919798385465\nonExistent.txt
-2024-06-03 14:49:15 INFO  FilesService:73 - Écriture dans le fichier : C:\Users\TOM~1.LEF\AppData\Local\Temp\testDir11548135963741246995\source.txt
-2024-06-03 14:49:15 INFO  FilesService:79 - Fusion des fichiers C:\Users\TOM~1.LEF\AppData\Local\Temp\file111833296508984951036.txt et C:\Users\TOM~1.LEF\AppData\Local\Temp\file210664218953679402869.txt dans C:\Users\TOM~1.LEF\AppData\Local\Temp\combined16179457797139769301.txt
-2024-06-03 14:49:15 INFO  FilesService:90 - Fusion réussie des fichiers dans : C:\Users\TOM~1.LEF\AppData\Local\Temp\combined16179457797139769301.txt
-2024-06-03 14:49:15 INFO  FilesService:67 - Copie du fichier de C:\Users\TOM~1.LEF\AppData\Local\Temp\testDir2604363267545463522\source.txt vers C:\Users\TOM~1.LEF\AppData\Local\Temp\testDir2604363267545463522\destination.txt
-2024-06-03 14:49:15 INFO  FilesService:67 - Copie du fichier de C:\Users\TOM~1.LEF\AppData\Local\Temp\testDir3811987806535857108\nonExistent.txt vers C:\Users\TOM~1.LEF\AppData\Local\Temp\testDir3811987806535857108\destination.txt
-2024-06-03 14:49:15 INFO  FilesService:61 - Suppression du fichier : C:\Users\TOM~1.LEF\AppData\Local\Temp\testDir17773142018945702775\source.txt
-2024-06-03 14:49:15 INFO  FilesService:73 - Écriture dans le fichier : C:\Users\TOM~1.LEF\AppData\Local\Temp\testDir158459517317872424\nonExistent.txt
-2024-06-03 14:49:17 INFO  PdfService:37 - Extraction du texte depuis le fichier PDF : test13491369100164213498.pdf
-2024-06-03 14:49:17 INFO  PdfService:45 - Texte extrait avec succès du fichier PDF : test13491369100164213498.pdf
-2024-06-03 14:49:17 INFO  PdfService:56 - Tri du texte extrait
-2024-06-03 14:49:17 INFO  PdfService:69 - Texte trié avec succès
-2024-06-03 14:49:17 INFO  PdfService:37 - Extraction du texte depuis le fichier PDF : nonexistent.pdf
-2024-06-03 14:49:17 ERROR PdfService:49 - Erreur lors de l'extraction du texte depuis le fichier PDF : src\test\resources\nonexistent.pdf (Le fichier spécifié est introuvable)
-2024-06-03 14:49:17 INFO  PdfService:79 - Traitement des fichiers PDF dans le dossier
-2024-06-03 14:49:17 INFO  PdfService:95 - Traitement des fichiers PDF terminé
-2024-06-03 14:49:17 INFO  PdfService:79 - Traitement des fichiers PDF dans le dossier
-2024-06-03 14:49:17 ERROR PdfService:90 - Erreur lors du traitement du fichier PDF : test9339900635013708541.pdf
+2024-06-03 15:04:11  [PdfService]  INFO   processPdfs - Traitement des fichiers PDF terminé
+2024-06-03 15:04:11  [PdfService]  INFO   sortText - Tri du texte extrait
+2024-06-03 15:04:11  [PdfService]  ERROR  sortText - Erreur lors du tri du texte extrait : Error extracting titles
+2024-06-03 15:04:11  [PdfService]  INFO   processPdfs - Traitement des fichiers PDF dans le dossier
+2024-06-03 15:04:11  [PdfService]  INFO   lambda$processPdfs$2 - Fichier PDF traité : test3447695496530648107.pdf
+2024-06-03 15:04:11  [PdfService]  INFO   lambda$processPdfs$2 - Fichier PDF traité : test2571356194073969327.pdf
+2024-06-03 15:04:11  [PdfService]  INFO   processPdfs - Traitement des fichiers PDF terminé
+2024-06-03 15:04:11  [RegexService]  INFO   extractCityAndPostalCode - Extraction de la ville et du code postal
+2024-06-03 15:04:11  [RegexService]  INFO   extractCityAndPostalCode - Ville et code postal extraits avec succès
+2024-06-03 15:04:11  [RegexService]  INFO   extractDate - Extraction de la date
+2024-06-03 15:04:11  [RegexService]  INFO   extractDate - Date extraite avec succès
+2024-06-03 15:04:11  [RegexService]  INFO   extractCityAndPostalCode - Extraction de la ville et du code postal
+2024-06-03 15:04:12  [RegexService]  WARN   extractCityAndPostalCode - Aucune ville trouvée dans le texte
+2024-06-03 15:04:12  [RegexService]  ERROR  extractCityAndPostalCode - Erreur lors de l'extraction de la ville par le regex : Aucune ville trouvée dans le texte.
+2024-06-03 15:04:12  [RegexService]  INFO   extractDate - Extraction de la date
+2024-06-03 15:04:12  [RegexService]  WARN   extractDate - Aucune date trouvée dans le texte
+2024-06-03 15:04:12  [RegexService]  ERROR  extractDate - Erreur lors de l'extraction de la date par le regex : Aucune date trouvée dans le texte.
+2024-06-03 15:04:12  [RegexService]  INFO   extractTitles - Extraction des titres du texte
+2024-06-03 15:04:12  [RegexService]  INFO   extractTitles - Titre unique extrait avec succès
+2024-06-03 15:04:12  [RegexService]  INFO   extractTitles - Extraction des titres du texte
+2024-06-03 15:04:12  [RegexService]  INFO   extractTitles - Titres extraits avec succès
+2024-06-03 15:04:12  [RegexService]  INFO   extractTitles - Extraction des titres du texte
+2024-06-03 15:04:12  [RegexService]  WARN   extractTitles - Aucun titre trouvé dans le texte
+2024-06-03 15:04:12  [RegexService]  ERROR  extractTitles - Erreur lors de l'extraction des titres par le regex : Aucun titre trouvé dans le texte.
+2024-06-03 15:04:12  [TreatmentService]  INFO   readpdf - Démarrage du traitement des fichiers PDF
+2024-06-03 15:04:12  [TreatmentService]  INFO   readpdf - Copie du fichier partie1 pour modification
+2024-06-03 15:04:12  [TreatmentService]  INFO   readpdf - Traitement des fichiers PDF dans le dossier
+2024-06-03 15:04:12  [TreatmentService]  INFO   readpdf - Ajout du texte extrait au fichier texte existant
+2024-06-03 15:04:12  [TreatmentService]  INFO   readpdf - Fusion des fichiers texte pour créer le fichier HTML final
+2024-06-03 15:04:12  [TreatmentService]  INFO   readpdf - Suppression du fichier temporaire partie1
+2024-06-03 15:04:12  [TreatmentService]  INFO   readpdf - Envoi du fichier HTML sur le serveur FTP
+2024-06-03 15:04:12  [TreatmentService]  INFO   readpdf - Traitement des fichiers PDF terminé
+2024-06-03 15:04:12  [TreatmentService]  INFO   readpdf - Démarrage du traitement des fichiers PDF
+2024-06-03 15:04:12  [TreatmentService]  ERROR  readpdf - Erreur : Le chemin n'amène pas à un dossier. Chemin: C:\Users\tom.lefevrebonzon\Desktop\projetAffichettes-readpdf\gitkraken\projet-1-ouest-france-readpdf\src\test\resources\nonFolder.txt
+2024-06-03 15:04:12  [TreatmentService]  INFO   readpdf - Démarrage du traitement des fichiers PDF
+2024-06-03 15:04:12  [TreatmentService]  INFO   readpdf - Copie du fichier partie1 pour modification
+2024-06-03 15:04:12  [TreatmentService]  INFO   readpdf - Traitement des fichiers PDF dans le dossier
+2024-06-03 15:17:04  [FilesService]  INFO   mergeTextFiles - Fusion des fichiers test.txt et C:\Users\TOM~1.LEF\AppData\Local\Temp\file217008129312382027967.txt dans C:\Users\TOM~1.LEF\AppData\Local\Temp\combined6348478935225332995.txt
+2024-06-03 15:17:04  [FilesService]  ERROR  mergeTextFiles - Erreur lors de l'assemblage des fichiers : test.txt
+2024-06-03 15:17:05  [FilesService]  INFO   deleteFile - Suppression du fichier : C:\Users\TOM~1.LEF\AppData\Local\Temp\testDir15245925289141196942\nonExistent.txt
+2024-06-03 15:17:05  [FilesService]  INFO   writeFile - Écriture dans le fichier : C:\Users\TOM~1.LEF\AppData\Local\Temp\testDir8988794452936051670\source.txt
+2024-06-03 15:17:05  [FilesService]  INFO   mergeTextFiles - Fusion des fichiers C:\Users\TOM~1.LEF\AppData\Local\Temp\file114907280186132613200.txt et C:\Users\TOM~1.LEF\AppData\Local\Temp\file211112512838029532053.txt dans C:\Users\TOM~1.LEF\AppData\Local\Temp\combined1963036382707991949.txt
+2024-06-03 15:17:05  [FilesService]  INFO   mergeTextFiles - Fusion réussie des fichiers dans : C:\Users\TOM~1.LEF\AppData\Local\Temp\combined1963036382707991949.txt
+2024-06-03 15:17:05  [FilesService]  INFO   copyFile - Copie du fichier de C:\Users\TOM~1.LEF\AppData\Local\Temp\testDir6350143002736459602\source.txt vers C:\Users\TOM~1.LEF\AppData\Local\Temp\testDir6350143002736459602\destination.txt
+2024-06-03 15:17:05  [FilesService]  INFO   copyFile - Copie du fichier de C:\Users\TOM~1.LEF\AppData\Local\Temp\testDir15925118551168103975\nonExistent.txt vers C:\Users\TOM~1.LEF\AppData\Local\Temp\testDir15925118551168103975\destination.txt
+2024-06-03 15:17:05  [FilesService]  INFO   deleteFile - Suppression du fichier : C:\Users\TOM~1.LEF\AppData\Local\Temp\testDir9067562844132849201\source.txt
+2024-06-03 15:17:05  [FilesService]  INFO   writeFile - Écriture dans le fichier : C:\Users\TOM~1.LEF\AppData\Local\Temp\testDir2417890681464584832\nonExistent.txt
+2024-06-03 15:17:07  [PdfService]  INFO   extractTextFromPDF - Extraction du texte depuis le fichier PDF : test7535372166553344232.pdf
+2024-06-03 15:17:07  [PdfService]  INFO   extractTextFromPDF - Texte extrait avec succès du fichier PDF : test7535372166553344232.pdf
+2024-06-03 15:17:07  [PdfService]  INFO   sortText - Tri du texte extrait
+2024-06-03 15:17:07  [PdfService]  INFO   sortText - Texte trié avec succès
+2024-06-03 15:17:07  [PdfService]  INFO   extractTextFromPDF - Extraction du texte depuis le fichier PDF : nonexistent.pdf
+2024-06-03 15:17:07  [PdfService]  ERROR  extractTextFromPDF - Erreur lors de l'extraction du texte depuis le fichier PDF : src\test\resources\nonexistent.pdf (Le fichier spécifié est introuvable)
+2024-06-03 15:17:07  [PdfService]  INFO   processPdfs - Traitement des fichiers PDF dans le dossier
+2024-06-03 15:17:07  [PdfService]  INFO   processPdfs - Traitement des fichiers PDF terminé
+2024-06-03 15:17:07  [PdfService]  INFO   processPdfs - Traitement des fichiers PDF dans le dossier
+2024-06-03 15:17:07  [PdfService]  ERROR  lambda$processPdfs$2 - Erreur lors du traitement du fichier PDF : test9301728847851866154.pdf
 com.readpdfaffichette.version1.exceptions.CustomAppException: Erreur lors de l'extraction du texte sur le pdf
 	at com.readpdfaffichette.version1.service.PdfService.lambda$processPdfs$2(PdfService.java:85) ~[classes/:?]
 	at java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:183) ~[?:?]
@@ -242,76 +237,65 @@ com.readpdfaffichette.version1.exceptions.CustomAppException: Erreur lors de l'e
 	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162) [surefire-booter-3.0.0-M5.jar:3.0.0-M5]
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562) [surefire-booter-3.0.0-M5.jar:3.0.0-M5]
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548) [surefire-booter-3.0.0-M5.jar:3.0.0-M5]
-2024-06-03 14:49:17 INFO  PdfService:95 - Traitement des fichiers PDF terminé
-2024-06-03 14:49:17 INFO  PdfService:56 - Tri du texte extrait
-2024-06-03 14:49:17 ERROR PdfService:72 - Erreur lors du tri du texte extrait : Error extracting titles
-2024-06-03 14:49:17 INFO  PdfService:79 - Traitement des fichiers PDF dans le dossier
-2024-06-03 14:49:17 INFO  PdfService:88 - Fichier PDF traité : test8854989399949510.pdf
-2024-06-03 14:49:17 INFO  PdfService:88 - Fichier PDF traité : test3280830342688291460.pdf
-2024-06-03 14:49:17 INFO  PdfService:95 - Traitement des fichiers PDF terminé
-2024-06-03 14:49:17 INFO  RegexService:90 - Extraction de la ville et du code postal
-2024-06-03 14:49:17 INFO  RegexService:97 - Ville et code postal extraits avec succès
-2024-06-03 14:49:17 INFO  RegexService:111 - Extraction de la date
-2024-06-03 14:49:17 INFO  RegexService:118 - Date extraite avec succès
-2024-06-03 14:49:17 INFO  RegexService:90 - Extraction de la ville et du code postal
-2024-06-03 14:49:17 WARN  RegexService:100 - Aucune ville trouvée dans le texte
-2024-06-03 14:49:17 ERROR RegexService:104 - Erreur lors de l'extraction de la ville par le regex : Aucune ville trouvée dans le texte.
-2024-06-03 14:49:17 INFO  RegexService:111 - Extraction de la date
-2024-06-03 14:49:17 WARN  RegexService:121 - Aucune date trouvée dans le texte
-2024-06-03 14:49:17 ERROR RegexService:125 - Erreur lors de l'extraction de la date par le regex : Aucune date trouvée dans le texte.
-2024-06-03 14:49:17 INFO  RegexService:43 - Extraction des titres du texte
-2024-06-03 14:49:17 INFO  RegexService:76 - Titre unique extrait avec succès
-2024-06-03 14:49:17 INFO  RegexService:43 - Extraction des titres du texte
-2024-06-03 14:49:17 INFO  RegexService:69 - Titres extraits avec succès
-2024-06-03 14:49:17 INFO  RegexService:43 - Extraction des titres du texte
-2024-06-03 14:49:17 WARN  RegexService:79 - Aucun titre trouvé dans le texte
-2024-06-03 14:49:17 ERROR RegexService:83 - Erreur lors de l'extraction des titres par le regex : Aucun titre trouvé dans le texte.
-2024-06-03 14:49:18 INFO  TreatmentService:59 - Démarrage du traitement des fichiers PDF
-2024-06-03 14:49:18 INFO  TreatmentService:67 - Copie du fichier partie1 pour modification
-2024-06-03 14:49:18 INFO  TreatmentService:71 - Traitement des fichiers PDF dans le dossier
-2024-06-03 14:49:18 INFO  TreatmentService:76 - Ajout du texte extrait au fichier texte existant
-2024-06-03 14:49:18 INFO  TreatmentService:84 - Fusion des fichiers texte pour créer le fichier HTML final
-2024-06-03 14:49:18 INFO  TreatmentService:88 - Suppression du fichier temporaire partie1
-2024-06-03 14:49:18 INFO  TreatmentService:93 - Envoi du fichier HTML sur le serveur FTP
-2024-06-03 14:49:18 INFO  TreatmentService:96 - Traitement des fichiers PDF terminé
-2024-06-03 14:49:18 INFO  TreatmentService:59 - Démarrage du traitement des fichiers PDF
-2024-06-03 14:49:18 ERROR TreatmentService:63 - Erreur : Le chemin n'amène pas à un dossier. Chemin: C:\Users\tom.lefevrebonzon\Desktop\projetAffichettes-readpdf\gitkraken\projet-1-ouest-france-readpdf\src\test\resources\nonFolder.txt
-2024-06-03 14:49:18 INFO  TreatmentService:59 - Démarrage du traitement des fichiers PDF
-2024-06-03 14:49:18 INFO  TreatmentService:67 - Copie du fichier partie1 pour modification
-2024-06-03 14:49:18 INFO  TreatmentService:71 - Traitement des fichiers PDF dans le dossier
-2024-06-03 15:00:57 + [FilesService] + INFO  + mergeTextFiles - Fusion des fichiers test.txt et C:\Users\TOM~1.LEF\AppData\Local\Temp\file26493747280012238743.txt dans C:\Users\TOM~1.LEF\AppData\Local\Temp\combined10068635318095185061.txt
-2024-06-03 15:00:57 + [FilesService] + ERROR + mergeTextFiles - Erreur lors de l'assemblage des fichiers : test.txt
-2024-06-03 15:00:57 + [FilesService] + INFO  + deleteFile - Suppression du fichier : C:\Users\TOM~1.LEF\AppData\Local\Temp\testDir4758310547307968540\nonExistent.txt
-2024-06-03 15:00:57 + [FilesService] + INFO  + writeFile - Écriture dans le fichier : C:\Users\TOM~1.LEF\AppData\Local\Temp\testDir6674044049389175806\source.txt
-2024-06-03 15:00:57 + [FilesService] + INFO  + mergeTextFiles - Fusion des fichiers C:\Users\TOM~1.LEF\AppData\Local\Temp\file11134463197533125070.txt et C:\Users\TOM~1.LEF\AppData\Local\Temp\file24908994080044073709.txt dans C:\Users\TOM~1.LEF\AppData\Local\Temp\combined14403970140692201176.txt
-2024-06-03 15:00:57 + [FilesService] + INFO  + mergeTextFiles - Fusion réussie des fichiers dans : C:\Users\TOM~1.LEF\AppData\Local\Temp\combined14403970140692201176.txt
-2024-06-03 15:00:57 + [FilesService] + INFO  + copyFile - Copie du fichier de C:\Users\TOM~1.LEF\AppData\Local\Temp\testDir5285522880406425643\source.txt vers C:\Users\TOM~1.LEF\AppData\Local\Temp\testDir5285522880406425643\destination.txt
-2024-06-03 15:00:57 + [FilesService] + INFO  + copyFile - Copie du fichier de C:\Users\TOM~1.LEF\AppData\Local\Temp\testDir6885620594698847254\nonExistent.txt vers C:\Users\TOM~1.LEF\AppData\Local\Temp\testDir6885620594698847254\destination.txt
-2024-06-03 15:00:57 + [FilesService] + INFO  + deleteFile - Suppression du fichier : C:\Users\TOM~1.LEF\AppData\Local\Temp\testDir4883763238409824467\source.txt
-2024-06-03 15:00:57 + [FilesService] + INFO  + writeFile - Écriture dans le fichier : C:\Users\TOM~1.LEF\AppData\Local\Temp\testDir11936239990339091187\nonExistent.txt
-2024-06-03 15:01:00 + [PdfService] + INFO  + extractTextFromPDF - Extraction du texte depuis le fichier PDF : test13848707396887199930.pdf
-2024-06-03 15:01:00 + [PdfService] + INFO  + extractTextFromPDF - Texte extrait avec succès du fichier PDF : test13848707396887199930.pdf
-2024-06-03 15:01:00 + [PdfService] + INFO  + sortText - Tri du texte extrait
-2024-06-03 15:01:00 + [PdfService] + INFO  + sortText - Texte trié avec succès
-2024-06-03 15:01:00 + [PdfService] + INFO  + extractTextFromPDF - Extraction du texte depuis le fichier PDF : nonexistent.pdf
-2024-06-03 15:01:00 + [PdfService] + ERROR + extractTextFromPDF - Erreur lors de l'extraction du texte depuis le fichier PDF : src\test\resources\nonexistent.pdf (Le fichier spécifié est introuvable)
-2024-06-03 15:01:00 + [PdfService] + INFO  + processPdfs - Traitement des fichiers PDF dans le dossier
-2024-06-03 15:01:00 + [PdfService] + INFO  + processPdfs - Traitement des fichiers PDF terminé
-2024-06-03 15:01:00 + [PdfService] + INFO  + processPdfs - Traitement des fichiers PDF dans le dossier
-2024-06-03 15:01:00 + [PdfService] + ERROR + lambda$processPdfs$2 - Erreur lors du traitement du fichier PDF : test16625591986505211319.pdf
+2024-06-03 15:17:07  [PdfService]  INFO   processPdfs - Traitement des fichiers PDF terminé
+2024-06-03 15:17:07  [PdfService]  INFO   sortText - Tri du texte extrait
+2024-06-03 15:17:07  [PdfService]  ERROR  sortText - Erreur lors du tri du texte extrait : Error extracting titles
+2024-06-03 15:17:07  [PdfService]  INFO   processPdfs - Traitement des fichiers PDF dans le dossier
+2024-06-03 15:17:07  [PdfService]  INFO   lambda$processPdfs$2 - test
+2024-06-03 15:17:07  [PdfService]  INFO   lambda$processPdfs$2 - test
+2024-06-03 15:17:07  [PdfService]  INFO   processPdfs - Traitement des fichiers PDF terminé
+2024-06-03 15:17:07  [RegexService]  INFO   extractCityAndPostalCode - Extraction de la ville et du code postal
+2024-06-03 15:17:07  [RegexService]  INFO   extractCityAndPostalCode - Ville et code postal extraits avec succès
+2024-06-03 15:17:07  [RegexService]  INFO   extractDate - Extraction de la date
+2024-06-03 15:17:07  [RegexService]  INFO   extractDate - Date extraite avec succès
+2024-06-03 15:17:07  [RegexService]  INFO   extractCityAndPostalCode - Extraction de la ville et du code postal
+2024-06-03 15:17:07  [RegexService]  WARN   extractCityAndPostalCode - Aucune ville trouvée dans le texte
+2024-06-03 15:17:07  [RegexService]  ERROR  extractCityAndPostalCode - Erreur lors de l'extraction de la ville par le regex : Aucune ville trouvée dans le texte.
+2024-06-03 15:17:07  [RegexService]  INFO   extractDate - Extraction de la date
+2024-06-03 15:17:07  [RegexService]  WARN   extractDate - Aucune date trouvée dans le texte
+2024-06-03 15:17:07  [RegexService]  ERROR  extractDate - Erreur lors de l'extraction de la date par le regex : Aucune date trouvée dans le texte.
+2024-06-03 15:17:07  [RegexService]  INFO   extractTitles - Extraction des titres du texte
+2024-06-03 15:17:07  [RegexService]  INFO   extractTitles - Titre unique extrait avec succès
+2024-06-03 15:17:07  [RegexService]  INFO   extractTitles - Extraction des titres du texte
+2024-06-03 15:17:07  [RegexService]  INFO   extractTitles - Titres extraits avec succès
+2024-06-03 15:17:07  [RegexService]  INFO   extractTitles - Extraction des titres du texte
+2024-06-03 15:17:07  [RegexService]  WARN   extractTitles - Aucun titre trouvé dans le texte
+2024-06-03 15:17:07  [RegexService]  ERROR  extractTitles - Erreur lors de l'extraction des titres par le regex : Aucun titre trouvé dans le texte.
+2024-06-03 15:17:07  [TreatmentService]  INFO   readpdf - Démarrage du traitement des fichiers PDF
+2024-06-03 15:17:07  [TreatmentService]  INFO   readpdf - Copie du fichier partie1 pour modification
+2024-06-03 15:17:07  [TreatmentService]  INFO   readpdf - Traitement des fichiers PDF dans le dossier
+2024-06-03 15:17:07  [TreatmentService]  INFO   readpdf - Ajout du texte extrait au fichier texte existant
+2024-06-03 15:17:07  [TreatmentService]  INFO   readpdf - Fusion des fichiers texte pour créer le fichier HTML final
+2024-06-03 15:17:07  [TreatmentService]  INFO   readpdf - Suppression du fichier temporaire partie1
+2024-06-03 15:17:07  [TreatmentService]  INFO   readpdf - Envoi du fichier HTML sur le serveur FTP
+2024-06-03 15:17:07  [TreatmentService]  INFO   readpdf - Traitement des fichiers PDF terminé
+2024-06-03 15:17:07  [TreatmentService]  INFO   readpdf - Démarrage du traitement des fichiers PDF
+2024-06-03 15:17:07  [TreatmentService]  ERROR  readpdf - Erreur : Le chemin n'amène pas à un dossier. Chemin: C:\Users\tom.lefevrebonzon\Desktop\projetAffichettes-readpdf\gitkraken\projet-1-ouest-france-readpdf\src\test\resources\nonFolder.txt
+2024-06-03 15:17:07  [TreatmentService]  INFO   readpdf - Démarrage du traitement des fichiers PDF
+2024-06-03 15:17:07  [TreatmentService]  INFO   readpdf - Copie du fichier partie1 pour modification
+2024-06-03 15:17:07  [TreatmentService]  INFO   readpdf - Traitement des fichiers PDF dans le dossier
+2024-06-03 15:24:43  [FilesService]  INFO   mergeTextFiles - Fusion des fichiers test.txt et C:\Users\TOM~1.LEF\AppData\Local\Temp\file210344222050585551711.txt dans C:\Users\TOM~1.LEF\AppData\Local\Temp\combined11120195741408930119.txt
+2024-06-03 15:24:43  [FilesService]  ERROR  mergeTextFiles - Erreur lors de l'assemblage des fichiers : test.txt
+2024-06-03 15:24:43  [FilesService]  INFO   deleteFile - Suppression du fichier : C:\Users\TOM~1.LEF\AppData\Local\Temp\testDir7737827300954477338\nonExistent.txt
+2024-06-03 15:24:43  [FilesService]  INFO   writeFile - Écriture dans le fichier : C:\Users\TOM~1.LEF\AppData\Local\Temp\testDir5683336768347389612\source.txt
+2024-06-03 15:24:43  [FilesService]  INFO   mergeTextFiles - Fusion des fichiers C:\Users\TOM~1.LEF\AppData\Local\Temp\file111689559333583189574.txt et C:\Users\TOM~1.LEF\AppData\Local\Temp\file25125166361459865622.txt dans C:\Users\TOM~1.LEF\AppData\Local\Temp\combined2381732420207861112.txt
+2024-06-03 15:24:43  [FilesService]  INFO   mergeTextFiles - Fusion réussie des fichiers dans : C:\Users\TOM~1.LEF\AppData\Local\Temp\combined2381732420207861112.txt
+2024-06-03 15:24:43  [FilesService]  INFO   copyFile - Copie du fichier de C:\Users\TOM~1.LEF\AppData\Local\Temp\testDir6253469957920777229\source.txt vers C:\Users\TOM~1.LEF\AppData\Local\Temp\testDir6253469957920777229\destination.txt
+2024-06-03 15:24:43  [FilesService]  INFO   copyFile - Copie du fichier de C:\Users\TOM~1.LEF\AppData\Local\Temp\testDir9979747257443152507\nonExistent.txt vers C:\Users\TOM~1.LEF\AppData\Local\Temp\testDir9979747257443152507\destination.txt
+2024-06-03 15:24:43  [FilesService]  INFO   deleteFile - Suppression du fichier : C:\Users\TOM~1.LEF\AppData\Local\Temp\testDir14374301017017987817\source.txt
+2024-06-03 15:24:43  [FilesService]  INFO   writeFile - Écriture dans le fichier : C:\Users\TOM~1.LEF\AppData\Local\Temp\testDir9136057908554840488\nonExistent.txt
+2024-06-03 15:24:45  [PdfService]  INFO   extractTextFromPDF - Extraction du texte depuis le fichier PDF : test10032541441716007084.pdf
+2024-06-03 15:24:45  [PdfService]  INFO   extractTextFromPDF - Texte extrait avec succès du fichier PDF : test10032541441716007084.pdf
+2024-06-03 15:24:45  [PdfService]  INFO   sortText - Tri du texte extrait
+2024-06-03 15:24:45  [PdfService]  INFO   sortText - Texte trié avec succès
+2024-06-03 15:24:45  [PdfService]  INFO   extractTextFromPDF - Extraction du texte depuis le fichier PDF : nonexistent.pdf
+2024-06-03 15:24:45  [PdfService]  ERROR  extractTextFromPDF - Erreur lors de l'extraction du texte depuis le fichier PDF : src\test\resources\nonexistent.pdf (Le fichier spécifié est introuvable)
+2024-06-03 15:24:45  [PdfService]  INFO   processPdfs - Traitement des fichiers PDF dans le dossier
+2024-06-03 15:24:45  [PdfService]  INFO   processPdfs - Traitement des fichiers PDF terminé
+2024-06-03 15:24:45  [PdfService]  INFO   processPdfs - Traitement des fichiers PDF dans le dossier
+2024-06-03 15:24:45  [PdfService]  ERROR  processPdfs - Erreur lors du traitement du fichier PDF : test699762221908550235.pdf
 com.readpdfaffichette.version1.exceptions.CustomAppException: Erreur lors de l'extraction du texte sur le pdf
-	at com.readpdfaffichette.version1.service.PdfService.lambda$processPdfs$2(PdfService.java:85) ~[classes/:?]
-	at java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:183) ~[?:?]
-	at java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:179) ~[?:?]
-	at java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:179) ~[?:?]
-	at java.util.stream.Streams$StreamBuilderImpl.forEachRemaining(Streams.java:411) ~[?:?]
-	at java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509) ~[?:?]
-	at java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499) ~[?:?]
-	at java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:150) ~[?:?]
-	at java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:173) ~[?:?]
-	at java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234) ~[?:?]
-	at java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596) ~[?:?]
-	at com.readpdfaffichette.version1.service.PdfService.processPdfs(PdfService.java:83) ~[classes/:?]
+	at com.readpdfaffichette.version1.service.PdfService.processPdfs(PdfService.java:88) ~[classes/:?]
 	at com.readpdfaffichette.version1.service.PdfServiceTest.testProcessPdfsWithException(PdfServiceTest.java:179) ~[test-classes/:?]
 	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:728) ~[junit-platform-commons-1.10.2.jar:1.10.2]
 	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
@@ -380,40 +364,42 @@ com.readpdfaffichette.version1.exceptions.CustomAppException: Erreur lors de l'e
 	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162) [surefire-booter-3.0.0-M5.jar:3.0.0-M5]
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562) [surefire-booter-3.0.0-M5.jar:3.0.0-M5]
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548) [surefire-booter-3.0.0-M5.jar:3.0.0-M5]
-2024-06-03 15:01:00 + [PdfService] + INFO  + processPdfs - Traitement des fichiers PDF terminé
-2024-06-03 15:01:00 + [PdfService] + INFO  + sortText - Tri du texte extrait
-2024-06-03 15:01:00 + [PdfService] + ERROR + sortText - Erreur lors du tri du texte extrait : Error extracting titles
-2024-06-03 15:01:00 + [PdfService] + INFO  + processPdfs - Traitement des fichiers PDF dans le dossier
-2024-06-03 15:01:00 + [PdfService] + INFO  + lambda$processPdfs$2 - Fichier PDF traité : test4251391222099128880.pdf
-2024-06-03 15:01:00 + [PdfService] + INFO  + lambda$processPdfs$2 - Fichier PDF traité : test18410948254501646533.pdf
-2024-06-03 15:01:00 + [PdfService] + INFO  + processPdfs - Traitement des fichiers PDF terminé
-2024-06-03 15:01:00 + [RegexService] + INFO  + extractCityAndPostalCode - Extraction de la ville et du code postal
-2024-06-03 15:01:00 + [RegexService] + INFO  + extractCityAndPostalCode - Ville et code postal extraits avec succès
-2024-06-03 15:01:00 + [RegexService] + INFO  + extractDate - Extraction de la date
-2024-06-03 15:01:00 + [RegexService] + INFO  + extractDate - Date extraite avec succès
-2024-06-03 15:01:00 + [RegexService] + INFO  + extractCityAndPostalCode - Extraction de la ville et du code postal
-2024-06-03 15:01:00 + [RegexService] + WARN  + extractCityAndPostalCode - Aucune ville trouvée dans le texte
-2024-06-03 15:01:00 + [RegexService] + ERROR + extractCityAndPostalCode - Erreur lors de l'extraction de la ville par le regex : Aucune ville trouvée dans le texte.
-2024-06-03 15:01:00 + [RegexService] + INFO  + extractDate - Extraction de la date
-2024-06-03 15:01:00 + [RegexService] + WARN  + extractDate - Aucune date trouvée dans le texte
-2024-06-03 15:01:00 + [RegexService] + ERROR + extractDate - Erreur lors de l'extraction de la date par le regex : Aucune date trouvée dans le texte.
-2024-06-03 15:01:00 + [RegexService] + INFO  + extractTitles - Extraction des titres du texte
-2024-06-03 15:01:00 + [RegexService] + INFO  + extractTitles - Titre unique extrait avec succès
-2024-06-03 15:01:00 + [RegexService] + INFO  + extractTitles - Extraction des titres du texte
-2024-06-03 15:01:00 + [RegexService] + INFO  + extractTitles - Titres extraits avec succès
-2024-06-03 15:01:00 + [RegexService] + INFO  + extractTitles - Extraction des titres du texte
-2024-06-03 15:01:00 + [RegexService] + WARN  + extractTitles - Aucun titre trouvé dans le texte
-2024-06-03 15:01:00 + [RegexService] + ERROR + extractTitles - Erreur lors de l'extraction des titres par le regex : Aucun titre trouvé dans le texte.
-2024-06-03 15:01:00 + [TreatmentService] + INFO  + readpdf - Démarrage du traitement des fichiers PDF
-2024-06-03 15:01:00 + [TreatmentService] + INFO  + readpdf - Copie du fichier partie1 pour modification
-2024-06-03 15:01:00 + [TreatmentService] + INFO  + readpdf - Traitement des fichiers PDF dans le dossier
-2024-06-03 15:01:00 + [TreatmentService] + INFO  + readpdf - Ajout du texte extrait au fichier texte existant
-2024-06-03 15:01:00 + [TreatmentService] + INFO  + readpdf - Fusion des fichiers texte pour créer le fichier HTML final
-2024-06-03 15:01:00 + [TreatmentService] + INFO  + readpdf - Suppression du fichier temporaire partie1
-2024-06-03 15:01:00 + [TreatmentService] + INFO  + readpdf - Envoi du fichier HTML sur le serveur FTP
-2024-06-03 15:01:00 + [TreatmentService] + INFO  + readpdf - Traitement des fichiers PDF terminé
-2024-06-03 15:01:00 + [TreatmentService] + INFO  + readpdf - Démarrage du traitement des fichiers PDF
-2024-06-03 15:01:00 + [TreatmentService] + ERROR + readpdf - Erreur : Le chemin n'amène pas à un dossier. Chemin: C:\Users\tom.lefevrebonzon\Desktop\projetAffichettes-readpdf\gitkraken\projet-1-ouest-france-readpdf\src\test\resources\nonFolder.txt
-2024-06-03 15:01:00 + [TreatmentService] + INFO  + readpdf - Démarrage du traitement des fichiers PDF
-2024-06-03 15:01:00 + [TreatmentService] + INFO  + readpdf - Copie du fichier partie1 pour modification
-2024-06-03 15:01:00 + [TreatmentService] + INFO  + readpdf - Traitement des fichiers PDF dans le dossier
+2024-06-03 15:24:45  [PdfService]  INFO   processPdfs - Traitement des fichiers PDF terminé
+2024-06-03 15:24:45  [PdfService]  INFO   sortText - Tri du texte extrait
+2024-06-03 15:24:45  [PdfService]  ERROR  sortText - Erreur lors du tri du texte extrait : Error extracting titles
+2024-06-03 15:24:46  [PdfService]  INFO   processPdfs - Traitement des fichiers PDF dans le dossier
+2024-06-03 15:24:46  [PdfService]  INFO   processPdfs - test
+2024-06-03 15:24:46  [PdfService]  INFO   processPdfs - Fichier PDF traité : test7011649337770300893.pdf
+2024-06-03 15:24:46  [PdfService]  INFO   processPdfs - test
+2024-06-03 15:24:46  [PdfService]  INFO   processPdfs - Fichier PDF traité : test12912010244152587873.pdf
+2024-06-03 15:24:46  [PdfService]  INFO   processPdfs - Traitement des fichiers PDF terminé
+2024-06-03 15:24:46  [RegexService]  INFO   extractCityAndPostalCode - Extraction de la ville et du code postal
+2024-06-03 15:24:46  [RegexService]  INFO   extractCityAndPostalCode - Ville et code postal extraits avec succès
+2024-06-03 15:24:46  [RegexService]  INFO   extractDate - Extraction de la date
+2024-06-03 15:24:46  [RegexService]  INFO   extractDate - Date extraite avec succès
+2024-06-03 15:24:46  [RegexService]  INFO   extractCityAndPostalCode - Extraction de la ville et du code postal
+2024-06-03 15:24:46  [RegexService]  WARN   extractCityAndPostalCode - Aucune ville trouvée dans le texte
+2024-06-03 15:24:46  [RegexService]  ERROR  extractCityAndPostalCode - Erreur lors de l'extraction de la ville par le regex : Aucune ville trouvée dans le texte.
+2024-06-03 15:24:46  [RegexService]  INFO   extractDate - Extraction de la date
+2024-06-03 15:24:46  [RegexService]  WARN   extractDate - Aucune date trouvée dans le texte
+2024-06-03 15:24:46  [RegexService]  ERROR  extractDate - Erreur lors de l'extraction de la date par le regex : Aucune date trouvée dans le texte.
+2024-06-03 15:24:46  [RegexService]  INFO   extractTitles - Extraction des titres du texte
+2024-06-03 15:24:46  [RegexService]  INFO   extractTitles - Titre unique extrait avec succès
+2024-06-03 15:24:46  [RegexService]  INFO   extractTitles - Extraction des titres du texte
+2024-06-03 15:24:46  [RegexService]  INFO   extractTitles - Titres extraits avec succès
+2024-06-03 15:24:46  [RegexService]  INFO   extractTitles - Extraction des titres du texte
+2024-06-03 15:24:46  [RegexService]  WARN   extractTitles - Aucun titre trouvé dans le texte
+2024-06-03 15:24:46  [RegexService]  ERROR  extractTitles - Erreur lors de l'extraction des titres par le regex : Aucun titre trouvé dans le texte.
+2024-06-03 15:24:46  [TreatmentService]  INFO   readpdf - Démarrage du traitement des fichiers PDF
+2024-06-03 15:24:46  [TreatmentService]  INFO   readpdf - Copie du fichier partie1 pour modification
+2024-06-03 15:24:46  [TreatmentService]  INFO   readpdf - Traitement des fichiers PDF dans le dossier
+2024-06-03 15:24:46  [TreatmentService]  INFO   readpdf - Ajout du texte extrait au fichier texte existant
+2024-06-03 15:24:46  [TreatmentService]  INFO   readpdf - Fusion des fichiers texte pour créer le fichier HTML final
+2024-06-03 15:24:46  [TreatmentService]  INFO   readpdf - Suppression du fichier temporaire partie1
+2024-06-03 15:24:46  [TreatmentService]  INFO   readpdf - Envoi du fichier HTML sur le serveur FTP
+2024-06-03 15:24:46  [TreatmentService]  INFO   readpdf - Traitement des fichiers PDF terminé
+2024-06-03 15:24:46  [TreatmentService]  INFO   readpdf - Démarrage du traitement des fichiers PDF
+2024-06-03 15:24:46  [TreatmentService]  ERROR  readpdf - Erreur : Le chemin n'amène pas à un dossier. Chemin: C:\Users\tom.lefevrebonzon\Desktop\projetAffichettes-readpdf\gitkraken\projet-1-ouest-france-readpdf\src\test\resources\nonFolder.txt
+2024-06-03 15:24:46  [TreatmentService]  INFO   readpdf - Démarrage du traitement des fichiers PDF
+2024-06-03 15:24:46  [TreatmentService]  INFO   readpdf - Copie du fichier partie1 pour modification
+2024-06-03 15:24:46  [TreatmentService]  INFO   readpdf - Traitement des fichiers PDF dans le dossier

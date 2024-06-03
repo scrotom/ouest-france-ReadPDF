@@ -13,6 +13,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.List;
 import java.util.stream.Stream;
 
 import lombok.extern.log4j.Log4j2;
@@ -78,19 +79,21 @@ public class PdfService {
     public StringBuilder processPdfs(Stream<Path> paths, RegexService regex) throws CustomAppException {
         log.info("Traitement des fichiers PDF dans le dossier");
         StringBuilder allTexts = new StringBuilder();
-        paths.filter(Files::isRegularFile)
+        List<Path> pathList = paths.filter(Files::isRegularFile)
                 .filter(path -> path.toString().endsWith(".pdf"))
-                .forEach(path -> {
-                    try {
-                        String text = extractTextFromPDF(path.toFile(), regex);
-                        text = sortText(text, regex);
-                        allTexts.append(text).append("\n\n");
-                        log.info("Fichier PDF traité : {}", path.getFileName());
-                    } catch (CustomAppException e) {
-                        log.error("Erreur lors du traitement du fichier PDF : {}", path.getFileName(), e);
-                        e.printStackTrace(System.out);
-                    }
-                });
+                .toList();
+
+        for (Path path : pathList) {
+            try {
+                String text = extractTextFromPDF(path.toFile(), regex);
+                text = sortText(text, regex);
+                allTexts.append(text).append("\n\n");
+                log.info("Fichier PDF traité : {}", path.getFileName());
+            } catch (CustomAppException e) {
+                log.error("Erreur lors du traitement du fichier PDF : {}", path.getFileName(), e);
+                e.printStackTrace(System.out);
+            }
+        }
 
         log.info("Traitement des fichiers PDF terminé");
         return allTexts;
