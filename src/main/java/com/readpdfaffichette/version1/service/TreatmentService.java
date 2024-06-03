@@ -14,6 +14,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.stream.Stream;
 
 import com.readpdfaffichette.version1.exceptions.CustomAppException;
@@ -56,7 +58,7 @@ public class TreatmentService {
         // Dossier contenant les fichiers PDF
         File folder = new File(filesService.getLink());
         if (!folder.isDirectory()) {
-            System.out.println("Erreur : Le chemin n'amène pas à un dossier."+ folder.getAbsolutePath());
+            System.out.println("Erreur : Le chemin n'amène pas à un dossier." + folder.getAbsolutePath());
             return;
         }
 
@@ -86,8 +88,13 @@ public class TreatmentService {
     }
 
     private void uploadFileToFTP(String filePath) throws IOException {
-        ftpService.uploadFileToFTP(ftpServer, ftpPort, ftpUser, ftpPassword, filePath, ftpUploadPath);
+        // Générer un chemin de fichier FTP dynamique avec la date du jour actuel
+        String dateStr = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+        String dynamicFtpUploadPath = ftpUploadPath.replace(".html", "_" + dateStr + ".html");
+
+        ftpService.uploadFileToFTP(ftpServer, ftpPort, ftpUser, ftpPassword, filePath, dynamicFtpUploadPath);
     }
 }
+
 
 
