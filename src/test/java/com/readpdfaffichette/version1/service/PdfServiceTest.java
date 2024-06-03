@@ -70,7 +70,6 @@ public class PdfServiceTest {
 
         assertEquals(expectedText, extractedText);
 
-        // Clean up the temporary file
         Files.deleteIfExists(tempPdfPath);
     }
 

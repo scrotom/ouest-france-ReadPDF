@@ -45,7 +45,7 @@ public class FilesService {
 
     public Path getMergedFilePath() {
         String dateStr = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
-        String filePath = System.getProperty("user.home") + "/output/affichettes_" + dateStr + ".html";
+        String filePath = "/projet/soft/feed/projet-1-ouest-france-readpdf/src/main/resources/output/affichettes_" + dateStr + ".html";
         return Path.of(filePath);
     }
 

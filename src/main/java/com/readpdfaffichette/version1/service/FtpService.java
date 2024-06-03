@@ -7,7 +7,7 @@
  *
  */
 
-/*package com.readpdfaffichette.version1.service;
+package com.readpdfaffichette.version1.service;
 
 import org.apache.commons.net.ftp.FTP;
 import org.apache.commons.net.ftp.FTPClient;
@@ -73,4 +73,4 @@ public class FtpService {
             }
         }
     }
-}*/
+}

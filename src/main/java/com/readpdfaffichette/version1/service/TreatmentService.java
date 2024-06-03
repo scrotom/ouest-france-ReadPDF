@@ -17,6 +17,7 @@ import java.nio.file.Paths;
 import java.util.stream.Stream;
 
 import com.readpdfaffichette.version1.exceptions.CustomAppException;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 
@@ -26,7 +27,7 @@ public class TreatmentService {
     private final PdfService pdfService;
     private final FilesService filesService;
     private final RegexService regexService;
-    /*private final FtpService ftpService;
+    private final FtpService ftpService;
 
     @Value("${ftp.server}")
     private String ftpServer;
@@ -43,13 +44,11 @@ public class TreatmentService {
     @Value("${ftp.upload.path}")
     private String ftpUploadPath;
 
-     */
-
-    public TreatmentService(PdfService pdfService, FilesService filesService, RegexService regexService) {
+    public TreatmentService(PdfService pdfService, FilesService filesService, RegexService regexService, FtpService ftpService) {
         this.pdfService = pdfService;
         this.filesService = filesService;
         this.regexService = regexService;
-        //this.ftpService = ftpService;
+        this.ftpService = ftpService;
     }
 
     public void readpdf(String[] args) throws IOException, CustomAppException {
@@ -81,11 +80,14 @@ public class TreatmentService {
         // Supprimer la partie1 du dossier
         filesService.deleteFile(filesService.getTextFile1Saveplace());
 
+        //upload sur le serveur ftp
+        uploadFileToFTP(mergedFilePath.toString());
+
     }
 
-    /*private void uploadFileToFTP(String filePath) throws IOException {
+    private void uploadFileToFTP(String filePath) throws IOException {
         ftpService.uploadFileToFTP(ftpServer, ftpPort, ftpUser, ftpPassword, filePath, ftpUploadPath);
-    }*/
+    }
 }
 
 

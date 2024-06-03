@@ -35,32 +35,28 @@ public class FilesServiceTest {
     @BeforeEach
     public void setUp() throws IOException {
         MockitoAnnotations.openMocks(this); // Initialize mocks
-        // Create temporary files for testing
+
         file1 = Files.createTempFile("file1", ".txt");
         file2 = Files.createTempFile("file2", ".txt");
         combinedFile = Files.createTempFile("combined", ".txt");
 
-        // Write content to the temporary files
         Files.write(file1, "Test1.\n".getBytes(StandardCharsets.UTF_8));
         Files.write(file2, "Test2.\n".getBytes(StandardCharsets.UTF_8));
 
-        // Create a temporary directory and files for testing other methods
         tempDirectory = Files.createTempDirectory("testDir");
         sourceFile = tempDirectory.resolve("source.txt");
         destinationFile = tempDirectory.resolve("destination.txt");
 
-        // Write some initial content to the source file
         Files.write(sourceFile, "Initial content".getBytes(StandardCharsets.UTF_8));
     }
 
     @AfterEach
     public void tearDown() throws IOException {
-        // Delete the temporary files
+
         Files.deleteIfExists(file1);
         Files.deleteIfExists(file2);
         Files.deleteIfExists(combinedFile);
 
-        // Clean up temporary directory after tests
         Files.walk(tempDirectory)
                 .map(Path::toFile)
                 .forEach(File::delete);
@@ -70,13 +66,11 @@ public class FilesServiceTest {
     @Test
     @DisplayName("test pour vérifier si le méthode MergeTextFiles combine bien le contenu de deux fichier.")
     public void testMergeTextFilesSuccess() throws IOException, CustomAppException {
-        // Merge the files
+
         filesService.mergeTextFiles(file1, file2, combinedFile);
 
-        // Read the combined file
         String combinedContent = Files.readString(combinedFile, StandardCharsets.UTF_8);
 
-        // Verify the combined content
         String expectedContent = "Test1.\nTest2.\n";
         assertEquals(expectedContent, combinedContent);
     }
@@ -130,17 +124,14 @@ public class FilesServiceTest {
     public void testCopyFileNonExistentSource() {
         Path nonExistentFile = tempDirectory.resolve("nonExistent.txt");
 
-        // Verify that an IOException is thrown when trying to copy from a non-existent source file
         assertThrows(IOException.class, () -> filesService.copyFile(nonExistentFile, destinationFile));
     }
 
     @Test
     @DisplayName("test pour vérifier si la méthode WriteFile écrit bien dans le fichier")
     public void testWriteFile() throws IOException {
-        // Write additional content to the source file
         filesService.writeFile(sourceFile, " Additional content");
 
-        // Ensure the file has the combined content
         assertEquals("Initial content Additional content", Files.readString(sourceFile, StandardCharsets.UTF_8));
     }
 
@@ -149,7 +140,6 @@ public class FilesServiceTest {
     public void testWriteFileNonExistent() {
         Path nonExistentFile = tempDirectory.resolve("nonExistent.txt");
 
-        // Verify that an IOException is thrown when trying to write to a non-existent file
         assertThrows(IOException.class, () -> filesService.writeFile(nonExistentFile, "Some content"));
     }
 }

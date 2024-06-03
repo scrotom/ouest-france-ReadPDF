@@ -1,4 +1,4 @@
-/*package com.readpdfaffichette.version1.service;
+package com.readpdfaffichette.version1.service;
 
 import org.apache.commons.net.ftp.FTP;
 import org.apache.commons.net.ftp.FTPClient;
@@ -165,5 +165,5 @@ public class FtpServiceTest {
         // Delete the temporary file after the test
         Files.deleteIfExists(tempFilePath);
     }
-}*/
+}
 
