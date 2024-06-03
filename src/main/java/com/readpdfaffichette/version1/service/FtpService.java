@@ -58,6 +58,7 @@ public class FtpService {
             try (InputStream inputStream = new FileInputStream(filePath)) {
                 logger.info("envoi du fichier...");
                 boolean done = ftpClient.storeFile(uploadPath, inputStream);
+                logger.info("Réponse FTP après tentative de téléversement : " + ftpClient.getReplyString());
                 if (!done) {
                     throw new IOException("impossible d'envoyer le fichier vers le serveur FTP");
                 }
