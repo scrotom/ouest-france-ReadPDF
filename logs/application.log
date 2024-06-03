@@ -279,3 +279,141 @@ com.readpdfaffichette.version1.exceptions.CustomAppException: Erreur lors de l'e
 2024-06-03 14:49:18 INFO  TreatmentService:59 - Démarrage du traitement des fichiers PDF
 2024-06-03 14:49:18 INFO  TreatmentService:67 - Copie du fichier partie1 pour modification
 2024-06-03 14:49:18 INFO  TreatmentService:71 - Traitement des fichiers PDF dans le dossier
+2024-06-03 15:00:57 + [FilesService] + INFO  + mergeTextFiles - Fusion des fichiers test.txt et C:\Users\TOM~1.LEF\AppData\Local\Temp\file26493747280012238743.txt dans C:\Users\TOM~1.LEF\AppData\Local\Temp\combined10068635318095185061.txt
+2024-06-03 15:00:57 + [FilesService] + ERROR + mergeTextFiles - Erreur lors de l'assemblage des fichiers : test.txt
+2024-06-03 15:00:57 + [FilesService] + INFO  + deleteFile - Suppression du fichier : C:\Users\TOM~1.LEF\AppData\Local\Temp\testDir4758310547307968540\nonExistent.txt
+2024-06-03 15:00:57 + [FilesService] + INFO  + writeFile - Écriture dans le fichier : C:\Users\TOM~1.LEF\AppData\Local\Temp\testDir6674044049389175806\source.txt
+2024-06-03 15:00:57 + [FilesService] + INFO  + mergeTextFiles - Fusion des fichiers C:\Users\TOM~1.LEF\AppData\Local\Temp\file11134463197533125070.txt et C:\Users\TOM~1.LEF\AppData\Local\Temp\file24908994080044073709.txt dans C:\Users\TOM~1.LEF\AppData\Local\Temp\combined14403970140692201176.txt
+2024-06-03 15:00:57 + [FilesService] + INFO  + mergeTextFiles - Fusion réussie des fichiers dans : C:\Users\TOM~1.LEF\AppData\Local\Temp\combined14403970140692201176.txt
+2024-06-03 15:00:57 + [FilesService] + INFO  + copyFile - Copie du fichier de C:\Users\TOM~1.LEF\AppData\Local\Temp\testDir5285522880406425643\source.txt vers C:\Users\TOM~1.LEF\AppData\Local\Temp\testDir5285522880406425643\destination.txt
+2024-06-03 15:00:57 + [FilesService] + INFO  + copyFile - Copie du fichier de C:\Users\TOM~1.LEF\AppData\Local\Temp\testDir6885620594698847254\nonExistent.txt vers C:\Users\TOM~1.LEF\AppData\Local\Temp\testDir6885620594698847254\destination.txt
+2024-06-03 15:00:57 + [FilesService] + INFO  + deleteFile - Suppression du fichier : C:\Users\TOM~1.LEF\AppData\Local\Temp\testDir4883763238409824467\source.txt
+2024-06-03 15:00:57 + [FilesService] + INFO  + writeFile - Écriture dans le fichier : C:\Users\TOM~1.LEF\AppData\Local\Temp\testDir11936239990339091187\nonExistent.txt
+2024-06-03 15:01:00 + [PdfService] + INFO  + extractTextFromPDF - Extraction du texte depuis le fichier PDF : test13848707396887199930.pdf
+2024-06-03 15:01:00 + [PdfService] + INFO  + extractTextFromPDF - Texte extrait avec succès du fichier PDF : test13848707396887199930.pdf
+2024-06-03 15:01:00 + [PdfService] + INFO  + sortText - Tri du texte extrait
+2024-06-03 15:01:00 + [PdfService] + INFO  + sortText - Texte trié avec succès
+2024-06-03 15:01:00 + [PdfService] + INFO  + extractTextFromPDF - Extraction du texte depuis le fichier PDF : nonexistent.pdf
+2024-06-03 15:01:00 + [PdfService] + ERROR + extractTextFromPDF - Erreur lors de l'extraction du texte depuis le fichier PDF : src\test\resources\nonexistent.pdf (Le fichier spécifié est introuvable)
+2024-06-03 15:01:00 + [PdfService] + INFO  + processPdfs - Traitement des fichiers PDF dans le dossier
+2024-06-03 15:01:00 + [PdfService] + INFO  + processPdfs - Traitement des fichiers PDF terminé
+2024-06-03 15:01:00 + [PdfService] + INFO  + processPdfs - Traitement des fichiers PDF dans le dossier
+2024-06-03 15:01:00 + [PdfService] + ERROR + lambda$processPdfs$2 - Erreur lors du traitement du fichier PDF : test16625591986505211319.pdf
+com.readpdfaffichette.version1.exceptions.CustomAppException: Erreur lors de l'extraction du texte sur le pdf
+	at com.readpdfaffichette.version1.service.PdfService.lambda$processPdfs$2(PdfService.java:85) ~[classes/:?]
+	at java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:183) ~[?:?]
+	at java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:179) ~[?:?]
+	at java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:179) ~[?:?]
+	at java.util.stream.Streams$StreamBuilderImpl.forEachRemaining(Streams.java:411) ~[?:?]
+	at java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509) ~[?:?]
+	at java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499) ~[?:?]
+	at java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:150) ~[?:?]
+	at java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:173) ~[?:?]
+	at java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234) ~[?:?]
+	at java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596) ~[?:?]
+	at com.readpdfaffichette.version1.service.PdfService.processPdfs(PdfService.java:83) ~[classes/:?]
+	at com.readpdfaffichette.version1.service.PdfServiceTest.testProcessPdfsWithException(PdfServiceTest.java:179) ~[test-classes/:?]
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:728) ~[junit-platform-commons-1.10.2.jar:1.10.2]
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:156) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:147) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:86) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:103) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:93) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:92) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:86) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:218) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:214) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:139) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:69) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:151) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at java.util.ArrayList.forEach(ArrayList.java:1511) ~[?:?]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at java.util.ArrayList.forEach(ArrayList.java:1511) ~[?:?]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:198) ~[junit-platform-launcher-1.10.2.jar:1.10.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:169) ~[junit-platform-launcher-1.10.2.jar:1.10.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:93) ~[junit-platform-launcher-1.10.2.jar:1.10.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:58) ~[junit-platform-launcher-1.10.2.jar:1.10.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:141) [junit-platform-launcher-1.10.2.jar:1.10.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:57) [junit-platform-launcher-1.10.2.jar:1.10.2]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:103) [junit-platform-launcher-1.10.2.jar:1.10.2]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:85) [junit-platform-launcher-1.10.2.jar:1.10.2]
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:47) [junit-platform-launcher-1.10.2.jar:1.10.2]
+	at org.junit.platform.launcher.core.SessionPerRequestLauncher.execute(SessionPerRequestLauncher.java:63) [junit-platform-launcher-1.10.2.jar:1.10.2]
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.execute(JUnitPlatformProvider.java:188) [surefire-junit-platform-3.0.0-M5.jar:3.0.0-M5]
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invokeAllTests(JUnitPlatformProvider.java:154) [surefire-junit-platform-3.0.0-M5.jar:3.0.0-M5]
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invoke(JUnitPlatformProvider.java:128) [surefire-junit-platform-3.0.0-M5.jar:3.0.0-M5]
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:428) [surefire-booter-3.0.0-M5.jar:3.0.0-M5]
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162) [surefire-booter-3.0.0-M5.jar:3.0.0-M5]
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562) [surefire-booter-3.0.0-M5.jar:3.0.0-M5]
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548) [surefire-booter-3.0.0-M5.jar:3.0.0-M5]
+2024-06-03 15:01:00 + [PdfService] + INFO  + processPdfs - Traitement des fichiers PDF terminé
+2024-06-03 15:01:00 + [PdfService] + INFO  + sortText - Tri du texte extrait
+2024-06-03 15:01:00 + [PdfService] + ERROR + sortText - Erreur lors du tri du texte extrait : Error extracting titles
+2024-06-03 15:01:00 + [PdfService] + INFO  + processPdfs - Traitement des fichiers PDF dans le dossier
+2024-06-03 15:01:00 + [PdfService] + INFO  + lambda$processPdfs$2 - Fichier PDF traité : test4251391222099128880.pdf
+2024-06-03 15:01:00 + [PdfService] + INFO  + lambda$processPdfs$2 - Fichier PDF traité : test18410948254501646533.pdf
+2024-06-03 15:01:00 + [PdfService] + INFO  + processPdfs - Traitement des fichiers PDF terminé
+2024-06-03 15:01:00 + [RegexService] + INFO  + extractCityAndPostalCode - Extraction de la ville et du code postal
+2024-06-03 15:01:00 + [RegexService] + INFO  + extractCityAndPostalCode - Ville et code postal extraits avec succès
+2024-06-03 15:01:00 + [RegexService] + INFO  + extractDate - Extraction de la date
+2024-06-03 15:01:00 + [RegexService] + INFO  + extractDate - Date extraite avec succès
+2024-06-03 15:01:00 + [RegexService] + INFO  + extractCityAndPostalCode - Extraction de la ville et du code postal
+2024-06-03 15:01:00 + [RegexService] + WARN  + extractCityAndPostalCode - Aucune ville trouvée dans le texte
+2024-06-03 15:01:00 + [RegexService] + ERROR + extractCityAndPostalCode - Erreur lors de l'extraction de la ville par le regex : Aucune ville trouvée dans le texte.
+2024-06-03 15:01:00 + [RegexService] + INFO  + extractDate - Extraction de la date
+2024-06-03 15:01:00 + [RegexService] + WARN  + extractDate - Aucune date trouvée dans le texte
+2024-06-03 15:01:00 + [RegexService] + ERROR + extractDate - Erreur lors de l'extraction de la date par le regex : Aucune date trouvée dans le texte.
+2024-06-03 15:01:00 + [RegexService] + INFO  + extractTitles - Extraction des titres du texte
+2024-06-03 15:01:00 + [RegexService] + INFO  + extractTitles - Titre unique extrait avec succès
+2024-06-03 15:01:00 + [RegexService] + INFO  + extractTitles - Extraction des titres du texte
+2024-06-03 15:01:00 + [RegexService] + INFO  + extractTitles - Titres extraits avec succès
+2024-06-03 15:01:00 + [RegexService] + INFO  + extractTitles - Extraction des titres du texte
+2024-06-03 15:01:00 + [RegexService] + WARN  + extractTitles - Aucun titre trouvé dans le texte
+2024-06-03 15:01:00 + [RegexService] + ERROR + extractTitles - Erreur lors de l'extraction des titres par le regex : Aucun titre trouvé dans le texte.
+2024-06-03 15:01:00 + [TreatmentService] + INFO  + readpdf - Démarrage du traitement des fichiers PDF
+2024-06-03 15:01:00 + [TreatmentService] + INFO  + readpdf - Copie du fichier partie1 pour modification
+2024-06-03 15:01:00 + [TreatmentService] + INFO  + readpdf - Traitement des fichiers PDF dans le dossier
+2024-06-03 15:01:00 + [TreatmentService] + INFO  + readpdf - Ajout du texte extrait au fichier texte existant
+2024-06-03 15:01:00 + [TreatmentService] + INFO  + readpdf - Fusion des fichiers texte pour créer le fichier HTML final
+2024-06-03 15:01:00 + [TreatmentService] + INFO  + readpdf - Suppression du fichier temporaire partie1
+2024-06-03 15:01:00 + [TreatmentService] + INFO  + readpdf - Envoi du fichier HTML sur le serveur FTP
+2024-06-03 15:01:00 + [TreatmentService] + INFO  + readpdf - Traitement des fichiers PDF terminé
+2024-06-03 15:01:00 + [TreatmentService] + INFO  + readpdf - Démarrage du traitement des fichiers PDF
+2024-06-03 15:01:00 + [TreatmentService] + ERROR + readpdf - Erreur : Le chemin n'amène pas à un dossier. Chemin: C:\Users\tom.lefevrebonzon\Desktop\projetAffichettes-readpdf\gitkraken\projet-1-ouest-france-readpdf\src\test\resources\nonFolder.txt
+2024-06-03 15:01:00 + [TreatmentService] + INFO  + readpdf - Démarrage du traitement des fichiers PDF
+2024-06-03 15:01:00 + [TreatmentService] + INFO  + readpdf - Copie du fichier partie1 pour modification
+2024-06-03 15:01:00 + [TreatmentService] + INFO  + readpdf - Traitement des fichiers PDF dans le dossier
