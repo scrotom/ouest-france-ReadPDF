@@ -10,6 +10,7 @@
 package com.readpdfaffichette.version1.service;
 
 import com.readpdfaffichette.version1.exceptions.CustomAppException;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
@@ -18,6 +19,7 @@ import java.io.IOException;
 import java.util.logging.Logger;
 
 @Component
+@Log4j2
 public class TreatmentBatch {
 
     Logger log = Logger.getLogger(TreatmentBatch.class.getName());

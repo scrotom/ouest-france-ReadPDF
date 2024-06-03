@@ -9,6 +9,7 @@
 
 package com.readpdfaffichette.version1.service;
 
+import lombok.extern.log4j.Log4j2;
 import org.apache.commons.net.ftp.FTP;
 import org.apache.commons.net.ftp.FTPClient;
 import org.apache.commons.net.ftp.FTPReply;
@@ -22,6 +23,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 @Service
+@Log4j2
 public class FtpService {
 
     private static final Logger logger = Logger.getLogger(FtpService.class.getName());

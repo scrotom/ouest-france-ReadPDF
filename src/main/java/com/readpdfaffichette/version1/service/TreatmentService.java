@@ -19,11 +19,13 @@ import java.util.Date;
 import java.util.stream.Stream;
 
 import com.readpdfaffichette.version1.exceptions.CustomAppException;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 
 @Service
+@Log4j2
 public class TreatmentService {
 
     private final PdfService pdfService;

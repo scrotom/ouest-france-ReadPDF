@@ -19,6 +19,7 @@ import java.util.Date;
 
 import lombok.Getter;
 
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -27,6 +28,7 @@ import com.readpdfaffichette.version1.exceptions.CustomAppException;
 
 @Component
 @Getter
+@Log4j2
 public class FilesService {
 
     //récupératon du chemin vers le dossier ou sont placé les pdf
