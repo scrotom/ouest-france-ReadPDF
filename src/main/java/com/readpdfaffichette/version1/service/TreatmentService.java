@@ -57,7 +57,7 @@ public class TreatmentService {
         // Dossier contenant les fichiers PDF
         File folder = new File(filesService.getLink());
         if (!folder.isDirectory()) {
-            System.out.println("Erreur : Le chemin n'amène pas à un dossier.");
+            System.out.println("Erreur : Le chemin n'amène pas à un dossier."+ folder.getAbsolutePath());
             return;
         }
 
@@ -72,8 +72,11 @@ public class TreatmentService {
             filesService.writeFile(filesService.getTextFile1Saveplace(), allTexts.toString());
         }
 
+        // Obtenir le chemin du fichier de sortie avec la date actuelle
+        Path mergedFilePath = filesService.getMergedFilePath();
+
         // Merger les deux fichiers txt qui serviront à la page HTML
-        filesService.mergeTextFiles(filesService.getTextFile1Saveplace(), filesService.getTextFile3(), filesService.getMergedFile());
+        filesService.mergeTextFiles(filesService.getTextFile1Saveplace(), filesService.getTextFile3(), mergedFilePath);
 
         // Supprimer la partie1 du dossier
         filesService.deleteFile(filesService.getTextFile1Saveplace());

@@ -14,16 +14,16 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 import java.nio.file.StandardOpenOption;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import lombok.Getter;
-import org.apache.commons.net.ftp.FTPClient;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import com.readpdfaffichette.version1.exceptions.CustomAppException;
 
-import javax.annotation.processing.Generated;
 
 @Component
 @Getter
@@ -43,9 +43,11 @@ public class FilesService {
     @Value("${partie1.outputPath}")
     private Path textFile1Saveplace;
 
-    //récupération du dossier d'enregistrement des document mergé
-    @Value("${mergedFile.outputPath}")
-    private Path mergedFile;
+    public Path getMergedFilePath() {
+        String dateStr = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+        String filePath = System.getProperty("user.home") + "/output/affichettes_" + dateStr + ".html";
+        return Path.of(filePath);
+    }
 
     //méthodes
 
