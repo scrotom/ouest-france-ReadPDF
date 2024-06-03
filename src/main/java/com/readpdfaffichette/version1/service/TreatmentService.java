@@ -56,21 +56,24 @@ public class TreatmentService {
     }
 
     public void readpdf(String[] args) throws IOException, CustomAppException {
-
+        log.info("Démarrage du traitement des fichiers PDF");
         // Dossier contenant les fichiers PDF
         File folder = new File(filesService.getLink());
         if (!folder.isDirectory()) {
-            System.out.println("Erreur : Le chemin n'amène pas à un dossier." + folder.getAbsolutePath());
+            log.error("Erreur : Le chemin n'amène pas à un dossier. Chemin: {}", folder.getAbsolutePath());
             return;
         }
 
+        log.info("Copie du fichier partie1 pour modification");
         // Copie de la partie1 du doc HTML, afin de pouvoir le modifier ensuite
         filesService.copyFile(filesService.getTextFile1(), filesService.getTextFile1Saveplace());
 
+        log.info("Traitement des fichiers PDF dans le dossier");
         // Fichier texte de sortie
         try (Stream<Path> paths = Files.walk(Paths.get(filesService.getLink()))) {
             StringBuilder allTexts = pdfService.processPdfs(paths, regexService);
 
+            log.info("Ajout du texte extrait au fichier texte existant");
             // Ajouter le texte extrait à la fin du fichier texte existant (partie1 : début du code HTML)
             filesService.writeFile(filesService.getTextFile1Saveplace(), allTexts.toString());
         }
@@ -78,14 +81,19 @@ public class TreatmentService {
         // Obtenir le chemin du fichier de sortie avec la date actuelle
         Path mergedFilePath = filesService.getMergedFilePath();
 
+        log.info("Fusion des fichiers texte pour créer le fichier HTML final");
         // Merger les deux fichiers txt qui serviront à la page HTML
         filesService.mergeTextFiles(filesService.getTextFile1Saveplace(), filesService.getTextFile3(), mergedFilePath);
 
+        log.info("Suppression du fichier temporaire partie1");
         // Supprimer la partie1 du dossier
         filesService.deleteFile(filesService.getTextFile1Saveplace());
 
         //upload sur le serveur ftp
+        log.info("Envoi du fichier HTML sur le serveur FTP");
         uploadFileToFTP(mergedFilePath.toString());
+
+        log.info("Traitement des fichiers PDF terminé");
 
     }
 

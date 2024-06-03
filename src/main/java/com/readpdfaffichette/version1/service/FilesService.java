@@ -31,11 +31,9 @@ import com.readpdfaffichette.version1.exceptions.CustomAppException;
 @Log4j2
 public class FilesService {
 
-    //récupératon du chemin vers le dossier ou sont placé les pdf
     @Value("${inputRepository.path}")
     private String link;
 
-    //récupération des fichiers pour le doc html final
     @Value("${partie1.inputPath}")
     private Path textFile1;
 
@@ -53,37 +51,45 @@ public class FilesService {
     // méthode permettant d'ajouter la date à la fin du nom de fichier
     public Path getMergedFilePath() {
         String dateStr = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
-        return Path.of(mergedFileBasePath + "_" + dateStr + ".html");
+        Path mergedFilePath = Path.of(mergedFileBasePath + "_" + dateStr + ".html");
+        log.info("Chemin du fichier combiné généré : {}", mergedFilePath);
+        return mergedFilePath;
     }
 
     //méthode permettant de supprimer un fichier
     public void deleteFile(Path filePath) throws IOException {
+        log.info("Suppression du fichier : {}", filePath);
         Files.delete(filePath);
     }
 
     //méthode permettant de copier un fichier d'un endroit a un autre
     public void copyFile(Path source, Path destination) throws IOException {
+        log.info("Copie du fichier de {} vers {}", source, destination);
         Files.copy(source, destination, StandardCopyOption.REPLACE_EXISTING);
     }
 
     //méthode permettant d'écrire dans un fichier
     public void writeFile(Path filePath, String content) throws IOException {
+        log.info("Écriture dans le fichier : {}", filePath);
         Files.writeString(filePath, content, StandardOpenOption.APPEND);
     }
 
     //méthode permettant de combiner deux fichier texte
     public void mergeTextFiles(Path file1Path, Path file2Path, Path combinedFilePath) throws IOException, CustomAppException {
+        log.info("Fusion des fichiers {} et {} dans {}", file1Path, file2Path, combinedFilePath);
         try {
-        // Lire le contenu des deux fichiers
-        String file1Content = Files.readString(file1Path, StandardCharsets.UTF_8);
-        String file2Content = Files.readString(file2Path, StandardCharsets.UTF_8);
+            // Lire le contenu des deux fichiers
+            String file1Content = Files.readString(file1Path, StandardCharsets.UTF_8);
+            String file2Content = Files.readString(file2Path, StandardCharsets.UTF_8);
 
-        // Combiner les contenus
-        String combinedContent = file1Content + file2Content;
+            // Combiner les contenus
+            String combinedContent = file1Content + file2Content;
 
-        // Écrire le contenu combiné dans un nouveau fichier
-        Files.write(combinedFilePath, combinedContent.getBytes(StandardCharsets.UTF_8));
+            // Écrire le contenu combiné dans un nouveau fichier
+            Files.write(combinedFilePath, combinedContent.getBytes(StandardCharsets.UTF_8));
+            log.info("Fusion réussie des fichiers dans : {}", combinedFilePath);
         } catch (IOException e) {
+            log.error("Erreur lors de l'assemblage des fichiers : {}", e.getMessage());
             throw new CustomAppException("erreur lors de l'assemblage des deux fichiers : " + e.getMessage());
         }
     }

@@ -54,7 +54,7 @@ public class FtpService {
 
             File file = new File(filePath);
             if (!file.exists() || !file.isFile()) {
-                throw new IOException("Fichier à téléverser introuvable : " + filePath);
+                throw new IOException("Fichier à envoyer introuvable : " + filePath);
             }
 
             try (InputStream inputStream = new FileInputStream(filePath)) {

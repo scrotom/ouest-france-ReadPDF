@@ -40,6 +40,7 @@ public class RegexService {
     
     //méthode permettant d'extraire du texte brut les titres et des les séparer si il y en a 2
     public String[] extractTitles(String text) throws CustomAppException {
+        log.info("Extraction des titres du texte");
         try {
             // Regex pour les Titres
             String titlesRegex = getRegexTitles();
@@ -65,52 +66,63 @@ public class RegexService {
                     // Retirer les sujets des titres
                     String firstTitle = firstTitleLine.substring(firstTitleSubject.length()).trim();
                     String secondTitle = secondTitleLine.substring(secondTitleSubject.length()).trim();
-
+                    log.info("Titres extraits avec succès");
                     return new String[] { firstTitleSubject, firstTitle, secondTitleSubject, secondTitle };
                 }
 
                 // Retourner le titre complet si un seul titre est présent
                 String titleSubject = titles.substring(0, titles.indexOf('.') + 1).trim();
                 String title = titles.substring(titleSubject.length()).trim();
+                log.info("Titre unique extrait avec succès");
                 return new String[] { titleSubject, title };
             } else {
+                log.warn("Aucun titre trouvé dans le texte");
                 throw new CustomAppException("Aucun titre trouvé dans le texte.");
             }
         } catch (Exception e) {
+            log.error("Erreur lors de l'extraction des titres par le regex : {}", e.getMessage());
             throw new CustomAppException("Erreur lors de l'extraction des titres par le regex : " + e.getMessage());
         }
     }
 
     //méthode permettant d'extraire du texte brut la ville et le code postal
     public String extractCityAndPostalCode(String text) throws CustomAppException{
+        log.info("Extraction de la ville et du code postal");
         try {
             // Regex pour la Ville et le Code Postal
             String cityAndPostalCodeRegex = getRegexCity();
             Pattern cityAndPostalCodePattern = Pattern.compile(cityAndPostalCodeRegex);
             Matcher cityAndPostalCodeMatcher = cityAndPostalCodePattern.matcher(text);
             if (cityAndPostalCodeMatcher.find()) {
+                log.info("Ville et code postal extraits avec succès");
                 return cityAndPostalCodeMatcher.group().trim();
             } else {
+                log.warn("Aucune ville trouvée dans le texte");
                 throw new CustomAppException("Aucune ville trouvée dans le texte.");
             }
         } catch (Exception e){
+            log.error("Erreur lors de l'extraction de la ville par le regex : {}", e.getMessage());
             throw new CustomAppException("Erreur lors de l'extraction de la ville par le regex : " + e.getMessage());
         }
     }
 
     //méthode permettant d'extraire du texte brut la date
     public String extractDate(String text) throws CustomAppException {
+        log.info("Extraction de la date");
         try {
             // Regex pour la Date
             String dateRegex = getRegexDate();
             Pattern datePattern = Pattern.compile(dateRegex);
             Matcher dateMatcher = datePattern.matcher(text);
             if (dateMatcher.find()) {
+                log.info("Date extraite avec succès");
                 return dateMatcher.group().trim();
             } else {
+                log.warn("Aucune date trouvée dans le texte");
                 throw new CustomAppException("Aucune date trouvée dans le texte.");
             }
         } catch (Exception e) {
+            log.error("Erreur lors de l'extraction de la date par le regex : {}", e.getMessage());
             throw new CustomAppException("Erreur lors de l'extraction de la date par le regex : " + e.getMessage());
         }
     }
