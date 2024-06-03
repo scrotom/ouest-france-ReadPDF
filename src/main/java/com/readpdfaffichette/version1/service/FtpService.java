@@ -14,6 +14,7 @@ import org.apache.commons.net.ftp.FTPClient;
 import org.apache.commons.net.ftp.FTPReply;
 import org.springframework.stereotype.Service;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -48,6 +49,11 @@ public class FtpService {
 
             ftpClient.enterLocalPassiveMode();
             ftpClient.setFileType(FTP.BINARY_FILE_TYPE);
+
+            File file = new File(filePath);
+            if (!file.exists() || !file.isFile()) {
+                throw new IOException("Fichier à téléverser introuvable : " + filePath);
+            }
 
             try (InputStream inputStream = new FileInputStream(filePath)) {
                 logger.info("envoi du fichier...");

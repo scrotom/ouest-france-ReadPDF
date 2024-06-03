@@ -43,13 +43,16 @@ public class FilesService {
     @Value("${partie1.outputPath}")
     private Path textFile1Saveplace;
 
+    @Value("${mergedFile.basePath}")
+    private String mergedFileBasePath;
+
+    //METHODES
+
+    // méthode permettant d'ajouter la date à la fin du nom de fichier
     public Path getMergedFilePath() {
         String dateStr = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
-        String filePath = "/projet/soft/feed/projet-1-ouest-france-readpdf/src/main/resources/output/affichettes_" + dateStr + ".html";
-        return Path.of(filePath);
+        return Path.of(mergedFileBasePath + "_" + dateStr + ".html");
     }
-
-    //méthodes
 
     //méthode permettant de supprimer un fichier
     public void deleteFile(Path filePath) throws IOException {
