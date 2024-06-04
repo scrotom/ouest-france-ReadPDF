@@ -56,7 +56,12 @@ public class TreatmentService {
     }
 
     public void readpdf(String[] args) throws IOException, CustomAppException {
+
         log.info("Démarrage du traitement des fichiers PDF");
+
+        // Supprimer le fichier de log de la veille
+        filesService.deleteYesterdayFile();
+
         // Dossier contenant les fichiers PDF
         File folder = new File(filesService.getLink());
         if (!folder.isDirectory()) {

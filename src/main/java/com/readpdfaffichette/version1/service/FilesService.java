@@ -15,6 +15,7 @@ import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 import java.nio.file.StandardOpenOption;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 import lombok.Getter;
@@ -55,6 +56,27 @@ public class FilesService {
         log.info("Chemin du fichier combiné généré : {}", mergedFilePath);
         return mergedFilePath;
     }
+
+    // méthode permettant d'obtenir la date d'hier au format "yyyy-MM-dd"
+    private String getYesterdayDate() {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.DATE, -1);  // réduire un jour
+        return sdf.format(calendar.getTime());
+    }
+
+    // méthode permettant de supprimer le fichier HTML du jour précédent
+    public void deleteYesterdayFile() throws IOException {
+        String yesterdayDate = getYesterdayDate();
+        Path yesterdayFilePath = Path.of(mergedFileBasePath + "_" + yesterdayDate + ".html");
+        if (Files.exists(yesterdayFilePath)) {
+            log.info("Suppression du fichier de log de la veille : {}", yesterdayFilePath);
+            Files.delete(yesterdayFilePath);
+        } else {
+            log.info("Aucun fichier de log trouvé pour la veille : {}", yesterdayFilePath);
+        }
+    }
+
 
     //méthode permettant de supprimer un fichier
     public void deleteFile(Path filePath) throws IOException {
